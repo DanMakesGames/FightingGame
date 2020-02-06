@@ -1,0 +1,16 @@
+﻿  Building Custom Rule D:/Documents/Game Projects/FightingGame/ggpo-master/src/CMakeLists.txt
+  bitvector.cpp
+  game_input.cpp
+  input_queue.cpp
+  log.cpp
+  main.cpp
+  poll.cpp
+  sync.cpp
+  timesync.cpp
+  platform_windows.cpp
+  udp.cpp
+  udp_proto.cpp
+  p2p.cpp
+  spectator.cpp
+  synctest.cpp
+  GGPO.vcxproj -> D:\Documents\Game Projects\FightingGame\ggpo-master\build\lib\x64\Release\GGPO.lib

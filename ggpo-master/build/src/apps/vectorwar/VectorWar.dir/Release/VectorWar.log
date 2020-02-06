@@ -1,0 +1,9 @@
+﻿  Building Custom Rule D:/Documents/Game Projects/FightingGame/ggpo-master/src/apps/vectorwar/CMakeLists.txt
+  gamestate.cpp
+  gdi_renderer.cpp
+  ggpo_perfmon.cpp
+  main.cpp
+  vectorwar.cpp
+  Generating code
+  Finished generating code
+  VectorWar.vcxproj -> D:\Documents\Game Projects\FightingGame\ggpo-master\build\bin\x64\Release\VectorWar.exe

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\bitvector.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\game_input.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\input_queue.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\log.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\main.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\poll.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\sync.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\timesync.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\platform_windows.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp_proto.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\p2p.cpp">
+      <Filter>Backends</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\spectator.cpp">
+      <Filter>Backends</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\synctest.cpp">
+      <Filter>Backends</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\bitvector.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\game_input.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\input_queue.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\log.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\poll.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\ring_buffer.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\sync.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\timesync.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\types.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\zconf.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\zlib.h">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp_msg.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp_proto.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\backend.h">
+      <Filter>Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\p2p.h">
+      <Filter>Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\spectator.h">
+      <Filter>Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\synctest.h">
+      <Filter>Backends</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\include\ggponet.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include=" ">
+      <UniqueIdentifier>{941748F3-6404-3F1B-96E8-F131793B8EBD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Backends">
+      <UniqueIdentifier>{47429EF0-9411-35DD-96B7-636EB3CE64FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Network">
+      <UniqueIdentifier>{3ECA0D7D-4AF8-3D9B-B407-ABEB8E73F8CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{266F9654-2F1F-38DC-9825-298B80AEF3C0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

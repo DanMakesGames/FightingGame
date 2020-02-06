@@ -1,0 +1,10 @@
+^D:\DOCUMENTS\GAME PROJECTS\FIGHTINGGAME\GGPO-MASTER\BUILD\CMAKEFILES\C82B7B218C7CB984B998A3B1417121E2\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Documents/Game Projects/FightingGame/ggpo-master" "-BD:/Documents/Game Projects/FightingGame/ggpo-master/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Documents/Game Projects/FightingGame/ggpo-master/build/GGPO.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

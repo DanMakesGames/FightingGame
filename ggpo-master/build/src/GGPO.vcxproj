@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ABEB4413-4F04-3805-AC6E-405470A244D7}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>GGPO</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Documents\Game Projects\FightingGame\ggpo-master\build\lib\x64\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GGPO.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">GGPO</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Documents\Game Projects\FightingGame\ggpo-master\build\lib\x64\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GGPO.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">GGPO</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\ggpo-master\src\include;D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4530</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\ggpo-master\src\include;D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\ggpo-master\src\include;D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\ggpo-master\src\include;D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4577;4530</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\ggpo-master\src\include;D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\ggpo-master\src\include;D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Documents/Game Projects/FightingGame/ggpo-master/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Documents/Game Projects/FightingGame/ggpo-master" "-BD:/Documents/Game Projects/FightingGame/ggpo-master/build" --check-stamp-file "D:/Documents/Game Projects/FightingGame/ggpo-master/build/src/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Documents\Game Projects\FightingGame\ggpo-master\src\CMakeSources.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Documents\Game Projects\FightingGame\ggpo-master\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Documents/Game Projects/FightingGame/ggpo-master/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Documents/Game Projects/FightingGame/ggpo-master" "-BD:/Documents/Game Projects/FightingGame/ggpo-master/build" --check-stamp-file "D:/Documents/Game Projects/FightingGame/ggpo-master/build/src/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Documents\Game Projects\FightingGame\ggpo-master\src\CMakeSources.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Documents\Game Projects\FightingGame\ggpo-master\build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\bitvector.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\game_input.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\input_queue.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\log.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\poll.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\ring_buffer.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\sync.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\timesync.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\types.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\zconf.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\zlib.h" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\bitvector.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\game_input.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\input_queue.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\log.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\main.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\poll.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\sync.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\timesync.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\platform_windows.cpp" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp_msg.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp_proto.h" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\network\udp_proto.cpp" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\backend.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\p2p.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\spectator.h" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\synctest.h" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\p2p.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\spectator.cpp" />
+    <ClCompile Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\lib\ggpo\backends\synctest.cpp" />
+    <ClInclude Include="D:\Documents\Game Projects\FightingGame\ggpo-master\src\include\ggponet.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Documents\Game Projects\FightingGame\ggpo-master\build\ZERO_CHECK.vcxproj">
+      <Project>{56E7700C-E4F5-3C42-B946-40F919E975E6}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

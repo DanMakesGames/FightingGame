@@ -1,0 +1,10 @@
+^D:\DOCUMENTS\GAME PROJECTS\FIGHTINGGAME\GGPO-MASTER\SRC\APPS\VECTORWAR\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SD:/Documents/Game Projects/FightingGame/ggpo-master" "-BD:/Documents/Game Projects/FightingGame/ggpo-master/build" --check-stamp-file "D:/Documents/Game Projects/FightingGame/ggpo-master/build/src/apps/vectorwar/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

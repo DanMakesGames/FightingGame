@@ -1,0 +1,8 @@
+﻿  Game.cpp
+  GameState.cpp
+  GraphicsModule.cpp
+  main.cpp
+D:\Documents\Game Projects\FightingGame\FightingGame\main.cpp(18,16): warning C4101: 'netModule': unreferenced local variable
+  NetworkModule.cpp
+GraphicsModule.obj : error LNK2001: unresolved external symbol _glewInit@0
+D:\Documents\Game Projects\FightingGame\Release\FightingGame.exe : fatal error LNK1120: 1 unresolved externals
