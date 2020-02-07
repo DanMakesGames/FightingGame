@@ -33,7 +33,11 @@ private:
 	unsigned int fragmentShaderID;
 	unsigned int vertexShaderID;
 	unsigned int shaderProgramID;
+
+	// returns shader ID
 	GLuint InitializeShader(GLenum type, const char* filename);
+
+	// returns program ID
 	GLuint InitializeShaderProgram(GLuint fragID, GLuint vertID);
 };
 

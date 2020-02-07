@@ -1,4 +1,6 @@
 #include "GraphicsModule.h"
+#include "Mesh.h"
+#include "Camera.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -26,24 +28,61 @@ bool GraphicsModule::Initialize()
 	window = glfwCreateWindow(windowX, windowY, "FightingGame", NULL, NULL);
 	glfwMakeContextCurrent(window);
 
-	//init glew
-	glewInit();
+    GLenum res = glewInit();
+    if (res != GLEW_OK)
+    {
+        fprintf(stderr, "Error: '%s'\n", glewGetErrorString(res));
+        return 1;
+    }
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
+    glClearColor(0., 0., 0., 1.);
+	//glEnable(GL_CULL_FACE);
 
     // Initialize shader
     // Create the frage and vertex shaders.
-    fragmentShaderID = InitializeShader(GL_FRAGMENT_SHADER, "fragShader.glsl");
-    vertexShaderID = InitializeShader(GL_VERTEX_SHADER, "vertShader.glsl");
+    fragmentShaderID = InitializeShader(GL_FRAGMENT_SHADER, "fragmentShader.glsl");
+    vertexShaderID = InitializeShader(GL_VERTEX_SHADER, "vertexShader.glsl");
 
     shaderProgramID = InitializeShaderProgram(fragmentShaderID, vertexShaderID);
+
+    Mesh* testCube = new Mesh();
+    testCube->MakeBox(glm::vec3(-1), glm::vec3(1));
+
+    
+    Camera cam;
+    //cam.SetDistance(45.0f);
+    cam.SetAspect(float(windowX) / float(windowY));
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        //glClear(GL_COLOR_BUFFER_BIT);
+        glViewport(0, 0, windowX, windowY);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        cam.Update();
+        
+        testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
+        
+        /*
+        glm::vec3 Vertices[3];
+        
+        Vertices[0] = glm::vec3(-1.0f, -1.0f, 0.0f);
+        Vertices[1] = glm::vec3(1.0f, -1.0f, 0.0f);
+        Vertices[2] = glm::vec3(0.0f, 1.0f, 0.0f);
+        GLuint VBO;
+        glGenBuffers(1, &VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
+        glEnableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+        */
+        
+
+        glFinish();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
@@ -52,6 +91,7 @@ bool GraphicsModule::Initialize()
     }
 
     glfwTerminate();
+    delete testCube;
     return 0;
 }
 
@@ -84,6 +124,13 @@ GLuint GraphicsModule::InitializeShader(GLenum type,const char* filename)
     if (bIsCompiled == GL_FALSE)
     {
         printf("Cannot Compile Shader at %s: ", filename);
+        // Print error message
+        GLint maxLength = 0;
+        glGetShaderiv(shaderID, GL_INFO_LOG_LENGTH, &maxLength);
+        std::vector<GLchar> errorLog(maxLength);
+        glGetShaderInfoLog(shaderID, maxLength, &maxLength, &errorLog[0]);
+        printf("GL ERRORS:\n%s\n", &errorLog[0]);
+
         glDeleteShader(shaderID);
         return -1;
     }
