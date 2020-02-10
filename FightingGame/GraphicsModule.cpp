@@ -19,8 +19,8 @@ GraphicsModule::~GraphicsModule()
 
 bool GraphicsModule::Initialize()
 {
-	windowX = 800;
-	windowY = 800;
+	windowX = 900;
+	windowY = 900;
 
 	if (!glfwInit())
 		return false;
@@ -48,6 +48,13 @@ bool GraphicsModule::Initialize()
     Mesh* testCube = new Mesh();
     testCube->MakeBox(glm::vec3(-1), glm::vec3(1));
 
+    Mesh* testMesh = new Mesh();
+
+    Assimp::Importer importer;
+    const aiScene* scene = importer.ReadFile("Cloud_KH1.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
+    //const aiScene* scene = importer.ReadFile("BoB.fbx", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
+    DEBUG_PRINT("Meshes: " << scene->mNumMeshes);
+    testMesh->InitMesh(0,scene->mMeshes[4]);
     
     Camera cam;
     //cam.SetDistance(45.0f);
@@ -63,24 +70,9 @@ bool GraphicsModule::Initialize()
 
         cam.Update();
         
-        testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        
-        /*
-        glm::vec3 Vertices[3];
-        
-        Vertices[0] = glm::vec3(-1.0f, -1.0f, 0.0f);
-        Vertices[1] = glm::vec3(1.0f, -1.0f, 0.0f);
-        Vertices[2] = glm::vec3(0.0f, 1.0f, 0.0f);
-        GLuint VBO;
-        glGenBuffers(1, &VBO);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(Vertices), Vertices, GL_STATIC_DRAW);
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        */
-        
+        //testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
+        testMesh->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
+
 
         glFinish();
         /* Swap front and back buffers */
@@ -92,6 +84,7 @@ bool GraphicsModule::Initialize()
 
     glfwTerminate();
     delete testCube;
+    delete testMesh;
     return 0;
 }
 
