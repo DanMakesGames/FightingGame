@@ -164,34 +164,50 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Asset.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AudioModule.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="GraphicsModule.cpp" />
     <ClCompile Include="GraphicsObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="NetworkModule.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="PrimitiveAsset.cpp" />
     <ClCompile Include="Skin.cpp" />
     <ClCompile Include="StaticModel.cpp" />
+    <ClCompile Include="StaticModelAsset.cpp" />
+    <ClCompile Include="StaticModelComponent.cpp" />
+    <ClCompile Include="TextureAsset.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="Asset.h" />
     <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="AudioModule.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="GraphicsModule.h" />
     <ClInclude Include="GraphicsObject.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="NetworkModule.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="PrimitiveAsset.h" />
     <ClInclude Include="Skin.h" />
     <ClInclude Include="StaticModel.h" />
+    <ClInclude Include="StaticModelAsset.h" />
+    <ClInclude Include="StaticModelComponent.h" />
+    <ClInclude Include="TextureAsset.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
