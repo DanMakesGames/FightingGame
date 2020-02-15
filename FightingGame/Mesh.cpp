@@ -16,8 +16,6 @@ Mesh::~Mesh()
 
 void Mesh::InitMesh(uint inIndex, const aiMesh* inAiMesh)
 {
-
-
 	vertices.clear();
 
 	if (!inAiMesh->HasPositions() || !inAiMesh->HasNormals())

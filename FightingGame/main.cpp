@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream> 
 #include <string>
+#include "AssetManager.h"
 #include "NetworkModule.h"
 #include "GraphicsModule.h"
 #define PORT_FILE "ipAndPort.txt"
@@ -47,9 +48,9 @@ int main(int argc, char** argv) {
 	}
 	*/
 
-	
+	AssetManager assetManager;
 	GraphicsModule graphicsModule;
-	graphicsModule.Initialize();
+	graphicsModule.Initialize(&assetManager);
 
 	// create network module
 

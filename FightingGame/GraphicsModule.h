@@ -14,14 +14,22 @@
 #include "GL/glew.h"
 
 #include <GLFW/glfw3.h>
+#include <Magick++.h>
 
+#include "AssetManager.h"
+
+/*
+master of all 3d related operations.
+*/
 class GraphicsModule
 {
 public:
-	bool Initialize();
+	bool Initialize(AssetManager* inAssetManager);
 
 	GraphicsModule();
 	~GraphicsModule();
+
+	// load assets from 
 
 private:
 
@@ -39,5 +47,9 @@ private:
 
 	// returns program ID
 	GLuint InitializeShaderProgram(GLuint fragID, GLuint vertID);
+
+	// pool of loaded assets.
+	AssetManager* assetManager;
+	
 };
 

@@ -119,15 +119,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\SDL2\include;$(SolutionDir)\ggpo-master\src\include;$(SolutionDir)\ggpo-master\src\lib\ggpo;D:\Documents\Game Projects\FightingGame\glew-2.1.0\include;D:\Documents\Game Projects\FightingGame\assimp 5.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ggpo-master\src\include;$(SolutionDir)\ggpo-master\src\lib\ggpo;D:\Documents\Game Projects\FightingGame\glew-2.1.0\include;D:\Documents\Game Projects\FightingGame\assimp 5.0\include;D:\Documents\Game Projects\FightingGame\ImageMagick-7.0.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)ggpo-master\build\lib\x64\Release\GGPO.lib;$(SolutionDir)packages\glfw.3.3.2\build\native\lib\static\v142\x64\glfw3.lib;opengl32.lib;D:\Documents\Game Projects\FightingGame\glew-2.1.0\glew-2.1.0\lib\Release\x64\glew32s.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\assimp-vc142-mt.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\IrrXML.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\zlibstatic.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\glfw.3.3.2\build\native\bin\dynamic\v142\x64\;D:\Documents\Game Projects\FightingGame\packages\glew.1.9.0.1\build\native\lib\v110\Win32\Release\static;D:\Documents\Game Projects\FightingGame\glew-2.1.0\lib\Release\x64;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)ggpo-master\build\lib\x64\Release\GGPO.lib;$(SolutionDir)packages\glfw.3.3.2\build\native\lib\static\v142\x64\glfw3.lib;opengl32.lib;D:\Documents\Game Projects\FightingGame\glew-2.1.0\glew-2.1.0\lib\Release\x64\glew32s.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\assimp-vc142-mt.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\IrrXML.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\zlibstatic.lib;D:\Documents\Game Projects\FightingGame\ImageMagick-7.0.9\lib\CORE_RL_Magick++_.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\glfw.3.3.2\build\native\bin\dynamic\v142\x64\;D:\Documents\Game Projects\FightingGame\packages\glew.1.9.0.1\build\native\lib\v110\Win32\Release\static;D:\Documents\Game Projects\FightingGame\glew-2.1.0\lib\Release\x64;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release;D:\Documents\Game Projects\FightingGame\ImageMagick-7.0.9\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -145,15 +145,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\Documents\Game Projects\FightingGame\SDL2\include;$(SolutionDir)\ggpo-master\src\include;$(SolutionDir)\ggpo-master\src\lib\ggpo;D:\Documents\Game Projects\FightingGame\glew-2.1.0\include;D:\Documents\Game Projects\FightingGame\assimp 5.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ggpo-master\src\include;$(SolutionDir)\ggpo-master\src\lib\ggpo;D:\Documents\Game Projects\FightingGame\glew-2.1.0\include;D:\Documents\Game Projects\FightingGame\assimp 5.0\include;D:\Documents\Game Projects\FightingGame\ImageMagick-7.0.9\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)ggpo-master\build\lib\x64\Release\GGPO.lib;$(SolutionDir)packages\glfw.3.3.2\build\native\lib\static\v142\x64\glfw3.lib;opengl32.lib;D:\Documents\Game Projects\FightingGame\glew-2.1.0\glew-2.1.0\lib\Release\x64\glew32s.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\assimp-vc142-mt.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\IrrXML.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\zlibstatic.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)packages\glfw.3.3.2\build\native\bin\dynamic\v142\x64\;D:\Documents\Game Projects\FightingGame\packages\glew.1.9.0.1\build\native\lib\v110\Win32\Release\static;D:\Documents\Game Projects\FightingGame\glew-2.1.0\lib\Release\x64;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(SolutionDir)ggpo-master\build\lib\x64\Release\GGPO.lib;$(SolutionDir)packages\glfw.3.3.2\build\native\lib\static\v142\x64\glfw3.lib;opengl32.lib;D:\Documents\Game Projects\FightingGame\glew-2.1.0\glew-2.1.0\lib\Release\x64\glew32s.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\assimp-vc142-mt.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\IrrXML.lib;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release\zlibstatic.lib;D:\Documents\Game Projects\FightingGame\ImageMagick-7.0.9\lib\CORE_RL_Magick++_.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\glfw.3.3.2\build\native\bin\dynamic\v142\x64\;D:\Documents\Game Projects\FightingGame\packages\glew.1.9.0.1\build\native\lib\v110\Win32\Release\static;D:\Documents\Game Projects\FightingGame\glew-2.1.0\lib\Release\x64;D:\Documents\Game Projects\FightingGame\assimp 5.0\lib\Release;D:\Documents\Game Projects\FightingGame\ImageMagick-7.0.9\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -164,24 +164,34 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GraphicsModule.cpp" />
+    <ClCompile Include="GraphicsObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="NetworkModule.cpp" />
+    <ClCompile Include="PrimitiveAsset.cpp" />
     <ClCompile Include="Skin.cpp" />
+    <ClCompile Include="StaticModel.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GraphicsModule.h" />
+    <ClInclude Include="GraphicsObject.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="NetworkModule.h" />
+    <ClInclude Include="PrimitiveAsset.h" />
     <ClInclude Include="Skin.h" />
+    <ClInclude Include="StaticModel.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

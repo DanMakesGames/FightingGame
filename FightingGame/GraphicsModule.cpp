@@ -1,5 +1,6 @@
 #include "GraphicsModule.h"
 #include "Mesh.h"
+#include "StaticModel.h"
 #include "Camera.h"
 #include <iostream>
 #include <fstream>
@@ -17,8 +18,9 @@ GraphicsModule::~GraphicsModule()
     glDeleteProgram(shaderProgramID);
 }
 
-bool GraphicsModule::Initialize()
+bool GraphicsModule::Initialize(AssetManager* inAssetManager)
 {
+    assetManager = inAssetManager;
 	windowX = 900;
 	windowY = 900;
 
@@ -27,7 +29,7 @@ bool GraphicsModule::Initialize()
 
 	window = glfwCreateWindow(windowX, windowY, "FightingGame", NULL, NULL);
 	glfwMakeContextCurrent(window);
-
+    
     GLenum res = glewInit();
     if (res != GLEW_OK)
     {
@@ -48,13 +50,14 @@ bool GraphicsModule::Initialize()
     Mesh* testCube = new Mesh();
     testCube->MakeBox(glm::vec3(-1), glm::vec3(1));
 
-    Mesh* testMesh = new Mesh();
-
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile("Cloud_KH1.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
     //const aiScene* scene = importer.ReadFile("BoB.fbx", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
+    //const aiScene* scene = importer.ReadFile("giorno.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
     DEBUG_PRINT("Meshes: " << scene->mNumMeshes);
-    testMesh->InitMesh(0,scene->mMeshes[4]);
+
+    StaticModel* testStaticModel = new StaticModel();
+    testStaticModel->InitializeFromScene(scene);
     
     Camera cam;
     //cam.SetDistance(45.0f);
@@ -71,8 +74,7 @@ bool GraphicsModule::Initialize()
         cam.Update();
         
         //testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        testMesh->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-
+        testStaticModel->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
 
         glFinish();
         /* Swap front and back buffers */
@@ -84,7 +86,8 @@ bool GraphicsModule::Initialize()
 
     glfwTerminate();
     delete testCube;
-    delete testMesh;
+    delete testStaticModel;
+
     return 0;
 }
 
