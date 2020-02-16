@@ -19,7 +19,16 @@
 #include "AssetManager.h"
 
 /*
-master of all 3d related operations.
+Master of all 3d related operations.
+Keeps references to all graphics objects, in order to facilitate a 
+centralized render loop.
+
+For future reference I think the most logcal way to organize things would be:
+1. 3dAssets class
+2. 3d asset renderers class
+3. Graphical Components class
+
+But im combining 3d asset renderers and graphical components because I'm lazy.
 */
 class GraphicsModule
 {
@@ -50,6 +59,8 @@ private:
 
 	// pool of loaded assets.
 	AssetManager* assetManager;
+
+	// Refernces to all 
 	
 };
 

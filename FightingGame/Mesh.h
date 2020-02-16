@@ -10,11 +10,6 @@ While there will be subclasses of this class (Skin...) all potential
 properties of mesh will be loaded here (for example wi) 
 */
 
-// info needed to be sent to the 
-struct ModelVertex {
-	glm::vec3 position;
-	glm::vec3 normal;
-};
 
 class Mesh
 {
@@ -23,22 +18,23 @@ public:
 	~Mesh();
 
 	void Draw(const glm::mat4 &modelMatrix, const glm::mat4 &viewProjMatrix, uint shader);
-	void MakeBox(const glm::vec3& boxMin, const glm::vec3& boxMax);
-	void SetBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData);
 
-	void InitMesh(uint inIndex, const aiMesh* inAiMesh);
+	void SetBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData);
+	
+	// debug tool to create a box mesh.
+	void MakeBox(const glm::vec3& boxMin, const glm::vec3& boxMax);
 
 private:
+	// indexes of the opengl buffers
 	uint vertexBuffer;
 	uint indexBuffer;
-	
-	std::vector<ModelVertex> vertices;
-	
-	// aka the indices in order.
-	std::vector<uint> triangles;
-	
-	std::vector<glm::mat4> BindingMatricies;
 
+	// assets.
+	const MeshAsset* meshAsset;
+
+	// fast access data pointer. Only use after initalization. Supports direct acces to asset data.
+	ModelDataPointers modelData;
+	
 	// Count of elements in to render
 	int Count;
 };

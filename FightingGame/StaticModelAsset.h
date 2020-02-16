@@ -1,15 +1,17 @@
 #pragma once
 #include "PrimitiveAsset.h"
-#include "Mesh.h"
+#include "MeshAsset.h"
 /*
 Just meshes and materials
 */
 class StaticModelAsset : public PrimitiveAsset
 {
 public:
-	bool InitializeMeshesFromScene(const aiScene* scene);
+	bool LoadFromFile(std::string fileName);
+
 private:
-	std::vector<Mesh> meshes;
+	bool InitializeMeshesFromScene(const aiScene* scene);
+	std::vector<MeshAsset> meshAssets;
 
 };
 

@@ -177,6 +177,7 @@
     <ClCompile Include="GraphicsObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="MeshAsset.cpp" />
     <ClCompile Include="NetworkModule.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PrimitiveAsset.cpp" />
@@ -200,6 +201,7 @@
     <ClInclude Include="GraphicsModule.h" />
     <ClInclude Include="GraphicsObject.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshAsset.h" />
     <ClInclude Include="NetworkModule.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PrimitiveAsset.h" />

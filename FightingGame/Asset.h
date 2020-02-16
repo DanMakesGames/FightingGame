@@ -16,11 +16,22 @@ Passing through the GraphicsModule also could facilitate instanced drawing.
 class Asset
 {
 public:
+	enum class EAssetType
+	{
+		AT_STATIC_MODEL
+	};
+
+	Asset(string inSource, EAssetType inType);
+
 	virtual bool LoadFromFile(std::string fileName) = 0;
+
+	string GetSource();
+	void SetSource(string sourceName);
+
 private:
-	std::string name;
 
 	// the file name of the asset.
-	std::string assetSource;
+	std::string source;
+	EAssetType type;
 };
 
