@@ -2,6 +2,7 @@
 #include "glm/glm.hpp"
 #include "glm/gtx/transform.hpp"
 #include "Core.h"
+#include "MeshAsset.h"
 #include <vector>
 
 /*
