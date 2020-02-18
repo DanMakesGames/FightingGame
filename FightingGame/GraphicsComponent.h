@@ -13,6 +13,8 @@ public:
 
 	virtual void Draw(const glm::mat4& modelMatrix, const glm::mat4& viewProjMatrix, uint shader)=0;
 
+	GraphicsModule* GetGraphicsModule();
+
 private:
 
 	GraphicsModule* graphicsModule;

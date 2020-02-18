@@ -2,6 +2,8 @@
 #include "Object.h"
 #include "Core.h"
 #include "Component.h"
+
+
 /*
 Conceptually equivalent to the Unreal Actor.
 Anything that exists in the pyhsical game world is an actor.
@@ -21,6 +23,6 @@ private:
 	glm::vec3 position;
 	glm::quat rotation;
 
-	std::vector<Component*> components;
+	std::vector<class Component*> components;
 };
 

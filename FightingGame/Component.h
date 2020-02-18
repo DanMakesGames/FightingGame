@@ -5,13 +5,13 @@
 class Component
 {
 public:
-	Component(Actor* inOwner);
+	Component(class Actor* inOwner);
 
 	Actor* GetOwner();
-	void SetOwner(Actor* inOwner);
+	void SetOwner(class Actor* inOwner);
 	virtual void Initialize();
 
 private:
-	Actor* owner;
+	class Actor* owner;
 };
 

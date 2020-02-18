@@ -14,7 +14,6 @@
 #include "GL/glew.h"
 
 #include <GLFW/glfw3.h>
-#include <Magick++.h>
 
 #include "AssetManager.h"
 
@@ -38,8 +37,9 @@ public:
 	GraphicsModule();
 	~GraphicsModule();
 
-	// load assets from 
-
+	// TODO this shouldn't be public. In the future all managers/modules will be under a central
+	// control which someone can go ask for stuff from.
+	AssetManager* assetManager;
 private:
 
 	// GLFW stuff
@@ -57,10 +57,7 @@ private:
 	// returns program ID
 	GLuint InitializeShaderProgram(GLuint fragID, GLuint vertID);
 
-	// pool of loaded assets.
-	AssetManager* assetManager;
-
-	// Refernces to all 
+	// Refernces to all GraphicsComponents
 	
 };
 

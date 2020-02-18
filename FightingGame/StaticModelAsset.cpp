@@ -14,7 +14,7 @@ bool StaticModelAsset::LoadFromFile(std::string fileName)
 
 	InitializeMeshesFromScene(scene);
 
-	delete scene;
+	//delete scene;
 	return true;
 }
 
@@ -34,4 +34,10 @@ bool StaticModelAsset::InitializeMeshesFromScene(const aiScene* scene)
 	}
 
 	return true;
+}
+
+const MeshAsset* StaticModelAsset::GetMeshAssets(uint& count)
+{
+	count = meshAssets.size();
+	return &(meshAssets[0]);
 }

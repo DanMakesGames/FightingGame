@@ -1,6 +1,6 @@
 #include "Mesh.h"
 
-Mesh::Mesh() : meshAsset(-1)
+Mesh::Mesh() : meshAsset(nullptr)
 {
 	// set up index and vertex buffers
 	glGenBuffers(1, &vertexBuffer);
@@ -12,6 +12,17 @@ Mesh::~Mesh()
 {
 	glDeleteBuffers(1, &vertexBuffer);
 	glDeleteBuffers(1, &indexBuffer);
+}
+
+bool Mesh::Initialize(const MeshAsset* inMeshAsset)
+{
+	meshAsset = inMeshAsset;
+	//meshAsset = nullptr;
+	meshData = inMeshAsset->GetMeshDataPointers();
+
+	SetBuffers(meshData.vertices, meshData.verticesCount, meshData.indices, meshData.indicesCount);
+
+	return true;
 }
 
 void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, uint shader)
@@ -56,10 +67,24 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 	glUseProgram(0);
 }
 
+void Mesh::SetBuffers(const ModelVertex* vertexData, const uint& vertexDataCount, const uint* indexData, const uint& indexDataCount)
+{
+	Count = indexDataCount;
+
+	// store vertex data in buffer
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, vertexDataCount * sizeof(ModelVertex), vertexData, GL_STATIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexDataCount * sizeof(uint), indexData, GL_STATIC_DRAW);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+
+}
+
 void Mesh::SetBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData)
 {
 	Count = (int)indexData.size();
-	printf("count: %d\n",Count);
 
 	// store vertex data in buffer
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);

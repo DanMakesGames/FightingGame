@@ -8,6 +8,7 @@ Base class for any asset that is made of 3d primitives.
 class PrimitiveAsset : public Asset
 {
 public:
+	using Asset::Asset;
 private:
 
 };

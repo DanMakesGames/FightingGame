@@ -38,3 +38,10 @@ void MeshAsset::InitMesh(uint inIndex, const aiMesh* inAiMesh)
 		}
 	}
 }
+
+MeshDataPointers MeshAsset::GetMeshDataPointers() const
+{
+	MeshDataPointers outMeshData(&(vertices[0]),vertices.size(), &(triangles[0]), triangles.size());
+	return outMeshData;
+}
+

@@ -1,12 +1,12 @@
 #include "GraphicsModule.h"
 #include "Mesh.h"
-#include "StaticModel.h"
+#include "StaticModelComponent.h"
 #include "Camera.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
-GraphicsModule::GraphicsModule()
+GraphicsModule::GraphicsModule() : assetManager(nullptr)
 {
 
 }
@@ -47,18 +47,24 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
 
     shaderProgramID = InitializeShaderProgram(fragmentShaderID, vertexShaderID);
 
-    Mesh* testCube = new Mesh();
-    testCube->MakeBox(glm::vec3(-1), glm::vec3(1));
+    //Mesh* testCube = new Mesh();
+    //testCube->MakeBox(glm::vec3(-1), glm::vec3(1));
 
-    Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile("Cloud_KH1.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
+    //Assimp::Importer importer;
+    //const aiScene* scene = importer.ReadFile("Cloud_KH1.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
     //const aiScene* scene = importer.ReadFile("BoB.fbx", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
     //const aiScene* scene = importer.ReadFile("giorno.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
-    DEBUG_PRINT("Meshes: " << scene->mNumMeshes);
+    //DEBUG_PRINT("Meshes: " << scene->mNumMeshes);
 
-    StaticModel* testStaticModel = new StaticModel();
-    testStaticModel->InitializeFromScene(scene);
-    
+    //StaticModel* testStaticModel = new StaticModel();
+    //testStaticModel->InitializeFromScene(scene);
+
+    StaticModelComponent testStaticModel1(nullptr,this);
+    testStaticModel1.SetModelSource("Cloud_KH1.obj");
+    testStaticModel1.Initialize();
+
+
+
     Camera cam;
     //cam.SetDistance(45.0f);
     cam.SetAspect(float(windowX) / float(windowY));
@@ -74,7 +80,8 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
         cam.Update();
         
         //testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        testStaticModel->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
+        //testStaticModel->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
+        testStaticModel1.Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
 
         glFinish();
         /* Swap front and back buffers */
@@ -85,8 +92,7 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
     }
 
     glfwTerminate();
-    delete testCube;
-    delete testStaticModel;
+    //delete testCube;
 
     return 0;
 }

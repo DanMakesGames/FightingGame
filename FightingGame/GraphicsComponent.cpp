@@ -4,3 +4,8 @@ GraphicsComponent::GraphicsComponent(Actor* inOwner, GraphicsModule* inModule) :
 {
 
 }
+
+GraphicsModule* GraphicsComponent::GetGraphicsModule()
+{
+	return graphicsModule;
+}
