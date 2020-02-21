@@ -1,24 +1,9 @@
-﻿  AssetManager.cpp
-D:\Documents\Game Projects\FightingGame\FightingGame\AssetManager.cpp(14,37): warning C4101: 'oor': unreferenced local variable
-  GraphicsComponent.cpp
-  GraphicsModule.cpp
-  Mesh.cpp
-  PrimitiveAsset.cpp
-  Skin.cpp
-  StaticModelAsset.cpp
-D:\Documents\Game Projects\FightingGame\FightingGame\StaticModelAsset.cpp(29,36): warning C4018: '<': signed/unsigned mismatch
-D:\Documents\Game Projects\FightingGame\FightingGame\StaticModelAsset.cpp(41,27): warning C4267: '=': conversion from 'size_t' to 'uint', possible loss of data
-  StaticModelComponent.cpp
-D:\Documents\Game Projects\FightingGame\FightingGame\StaticModelComponent.cpp(18,36): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-D:\Documents\Game Projects\FightingGame\packages\glfw.3.3.2\build\native\include\GLFW\glfw3.h(123): message : see previous definition of 'APIENTRY'
-D:\Documents\Game Projects\FightingGame\FightingGame\main.cpp(19,16): warning C4101: 'netModule': unreferenced local variable
+﻿  GraphicsModule.cpp
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Generating code
-  8 of 666 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+  2 of 709 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    4 functions had inline decision re-evaluated but remain unchanged
+    21 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 glew32s.lib(glew.obj) : warning LNK4099: PDB 'glew_static.pdb' was not found with 'glew32s.lib(glew.obj)' or at 'D:\Documents\Game Projects\FightingGame\x64\Release\glew_static.pdb'; linking object as if no debug info
   FightingGame.vcxproj -> D:\Documents\Game Projects\FightingGame\x64\Release\FightingGame.exe

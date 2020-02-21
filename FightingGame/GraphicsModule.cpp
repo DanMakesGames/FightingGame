@@ -58,12 +58,21 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
 
     //StaticModel* testStaticModel = new StaticModel();
     //testStaticModel->InitializeFromScene(scene);
+    Actor testActor;
+    testActor.position.x = 80;
+    testActor.position.y = -50;
+    testActor.rotation = glm::quat(glm::yawPitchRoll(0.8f, 0.0f ,0.0f));
 
-    StaticModelComponent testStaticModel1(nullptr,this);
+    StaticModelComponent testStaticModel1(&testActor,this);
+    testStaticModel1.localPosition.z = -300;
+    testStaticModel1.localRotation = glm::quat(glm::yawPitchRoll(0.0f, 3.14f, 0.0f));
     testStaticModel1.SetModelSource("Cloud_KH1.obj");
     testStaticModel1.Initialize();
 
-
+    Actor testActor2;
+    StaticModelComponent testStaticModel2(&testActor2, this);
+    testStaticModel2.SetModelSource("Cloud_KH1.obj");
+    testStaticModel2.Initialize();
 
     Camera cam;
     //cam.SetDistance(45.0f);
@@ -82,7 +91,7 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
         //testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
         //testStaticModel->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
         testStaticModel1.Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-
+        testStaticModel2.Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
         glFinish();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

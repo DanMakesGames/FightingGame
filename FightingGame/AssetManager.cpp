@@ -14,7 +14,7 @@ const void* AssetManager::LoadAsset(string source, Asset::EAssetType type)
 			catch (const std::out_of_range & oor)
 			{
 				// no mapping for this source. Must Load new asset.
-				DEBUG_PRINT("NOT FOUND: "<< source);
+				DEBUG_PRINT("AM. NOT FOUND, loading now: "<< source);
 
 				staticModels.emplace_back(source, type);
 				staticModels.back().LoadFromFile(source);

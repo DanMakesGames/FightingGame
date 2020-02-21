@@ -27,6 +27,15 @@ void StaticModelComponent::Draw(const glm::mat4& modelMatrix, const glm::mat4& v
 	// loop over meshes, drawing them.
 
 	// important that you need to take into account the attached actor's position and rotation.
+	Actor* owner = GetOwner();
+	glm::mat4 offsetMatrix = glm::translate(localPosition);
+	glm::mat4 actorWorldMatrix = glm::translate(GetOwner()->position) * glm::mat4_cast(owner->rotation);
+	glm::mat4 worldMatrix = actorWorldMatrix * offsetMatrix * glm::mat4_cast(localRotation);
+
+	for (int meshIndex = 0; meshIndex < meshes.size(); meshIndex++)
+	{
+		meshes[meshIndex].Draw(worldMatrix, viewProjMatrix, shader);
+	}
 }
 
 void StaticModelComponent::SetModelSource(const string &source)
