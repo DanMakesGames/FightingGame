@@ -9,6 +9,7 @@ const void* AssetManager::LoadAsset(string source, Asset::EAssetType type)
 		{
 			try
 			{
+				DEBUG_PRINT("AM: ASSET FOUND");
 				assetPointer = sourceToPtrMap.at(source);
 			}
 			catch (const std::out_of_range & oor)
@@ -19,6 +20,8 @@ const void* AssetManager::LoadAsset(string source, Asset::EAssetType type)
 				staticModels.emplace_back(source, type);
 				staticModels.back().LoadFromFile(source);
 				assetPointer = &staticModels.back();
+
+				sourceToPtrMap.emplace(source, assetPointer);
 			}
 		}
 		break;
