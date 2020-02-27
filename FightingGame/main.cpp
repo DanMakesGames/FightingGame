@@ -4,6 +4,7 @@
 #include "AssetManager.h"
 #include "NetworkModule.h"
 #include "GraphicsModule.h"
+#include "Master.h"
 #define PORT_FILE "ipAndPort.txt"
 
 #define DEFAULT_CLIENT_PORT "27666"
@@ -48,14 +49,16 @@ int main(int argc, char** argv) {
 	}
 	*/
 
-	AssetManager assetManager;
-	GraphicsModule graphicsModule;
-	graphicsModule.Initialize(&assetManager);
+	//AssetManager assetManager;
+	//GraphicsModule graphicsModule;
+	//graphicsModule.Initialize(&assetManager);
+
+	Master master;
+	master.Initialize();
+	master.currentGame.MainLoop();
 
 	// create network module
 
 	// If connected. Create game and proceed. 
-	
-
 	return 0;
 }

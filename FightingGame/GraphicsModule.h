@@ -12,10 +12,13 @@
 //#pragma comment(lib, "glew.lib")
 
 #include "GL/glew.h"
-
 #include <GLFW/glfw3.h>
-
 #include "AssetManager.h"
+
+#include "Core.h"
+#include "GraphicsComponent.h"
+
+class GraphicsComponent;
 
 /*
 Master of all 3d related operations.
@@ -32,6 +35,7 @@ But im combining 3d asset renderers and graphical components because I'm lazy.
 class GraphicsModule
 {
 public:
+	GLFWwindow* window;
 	bool Initialize(AssetManager* inAssetManager);
 
 	GraphicsModule();
@@ -40,11 +44,17 @@ public:
 	// TODO this shouldn't be public. In the future all managers/modules will be under a central
 	// control which someone can go ask for stuff from.
 	AssetManager* assetManager;
+
+	// loop over all graphicsComponents and render the scene.
+	void RenderFrame(float deltaTime);
+
+	std::list<GraphicsComponent*>::iterator RegisterComponent(GraphicsComponent* inComponent);
+	void UnregisterComponent(const std::list<GraphicsComponent*>::iterator& it);
+
 private:
 
 	// GLFW stuff
 	int windowX, windowY;
-	GLFWwindow* window;
 
 	// shader
 	unsigned int fragmentShaderID;
@@ -58,6 +68,6 @@ private:
 	GLuint InitializeShaderProgram(GLuint fragID, GLuint vertID);
 
 	// Refernces to all GraphicsComponents
-	
+	std::list<GraphicsComponent*> graphicsComponents;
 };
 

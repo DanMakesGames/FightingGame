@@ -1,8 +1,10 @@
 #pragma once
-#include "Object.h"
-#include "Core.h"
-#include "Component.h"
 
+#include "Core.h"
+#include "Object.h"
+//#include "Component.h"
+
+class Component;
 
 /*
 Conceptually equivalent to the Unreal Actor.
@@ -23,8 +25,6 @@ public:
 	
 private:
 
-
-
-	std::vector<class Component*> components;
+	std::vector<Component*> components;
 };
 

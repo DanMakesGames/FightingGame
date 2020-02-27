@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "Actor.h"
 
 GraphicsModule::GraphicsModule() : assetManager(nullptr)
 {
@@ -16,6 +17,7 @@ GraphicsModule::~GraphicsModule()
     glDeleteShader(fragmentShaderID);
     glDeleteShader(vertexShaderID);
     glDeleteProgram(shaderProgramID);
+    glfwTerminate();
 }
 
 bool GraphicsModule::Initialize(AssetManager* inAssetManager)
@@ -34,7 +36,7 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
     if (res != GLEW_OK)
     {
         fprintf(stderr, "Error: '%s'\n", glewGetErrorString(res));
-        return 1;
+        return false;
     }
 	glEnable(GL_DEPTH_TEST);
     glClearColor(0., 0., 0., 1.);
@@ -47,63 +49,7 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
 
     shaderProgramID = InitializeShaderProgram(fragmentShaderID, vertexShaderID);
 
-    //Mesh* testCube = new Mesh();
-    //testCube->MakeBox(glm::vec3(-1), glm::vec3(1));
-
-    //Assimp::Importer importer;
-    //const aiScene* scene = importer.ReadFile("Cloud_KH1.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
-    //const aiScene* scene = importer.ReadFile("BoB.fbx", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
-    //const aiScene* scene = importer.ReadFile("giorno.obj", aiProcess_Triangulate | aiProcess_GenSmoothNormals);
-    //DEBUG_PRINT("Meshes: " << scene->mNumMeshes);
-
-    //StaticModel* testStaticModel = new StaticModel();
-    //testStaticModel->InitializeFromScene(scene);
-    Actor testActor;
-    testActor.position.x = 80;
-    testActor.position.y = -50;
-    testActor.rotation = glm::quat(glm::yawPitchRoll(0.8f, 0.0f ,0.0f));
-
-    StaticModelComponent testStaticModel1(&testActor,this);
-    testStaticModel1.localPosition.z = -300;
-    testStaticModel1.localRotation = glm::quat(glm::yawPitchRoll(0.0f, 3.14f, 0.0f));
-    testStaticModel1.SetModelSource("Cloud_KH1.obj");
-    testStaticModel1.Initialize();
-
-    Actor testActor2;
-    StaticModelComponent testStaticModel2(&testActor2, this);
-    testStaticModel2.SetModelSource("Cloud_KH1.obj");
-    testStaticModel2.Initialize();
-
-    Camera cam;
-    //cam.SetDistance(45.0f);
-    cam.SetAspect(float(windowX) / float(windowY));
-
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        //glClear(GL_COLOR_BUFFER_BIT);
-        glViewport(0, 0, windowX, windowY);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        cam.Update();
-        
-        //testCube->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        //testStaticModel->Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        testStaticModel1.Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        testStaticModel2.Draw(glm::mat4(1), cam.GetViewProjectMtx(), shaderProgramID);
-        glFinish();
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-
-    glfwTerminate();
-    //delete testCube;
-
-    return 0;
+    return true;
 }
 
 GLuint GraphicsModule::InitializeShader(GLenum type,const char* filename)
@@ -169,4 +115,42 @@ GLuint GraphicsModule::InitializeShaderProgram(GLuint fragID, GLuint vertID)
     }
 
     return programID;
+}
+
+void GraphicsModule::RenderFrame(float deltaTime)
+{
+    glViewport(0, 0, windowX, windowY);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    Camera cam;
+    //cam.SetDistance(45.0f);
+    cam.SetAspect(float(windowX) / float(windowY));
+
+    cam.Update();
+
+    // TODO
+    // loop over graphics components and draw the scene.
+    for (auto compIt = graphicsComponents.begin(); compIt != graphicsComponents.end();compIt++)
+    {
+        (*compIt)->Draw(glm::mat4(1),cam.GetViewProjectMtx(), shaderProgramID);
+    }
+    
+    glFinish();
+
+    /* Swap front and back buffers */
+    glfwSwapBuffers(window);
+
+    /* Poll for and process events */
+    glfwPollEvents();
+}
+
+std::list<GraphicsComponent*>::iterator GraphicsModule::RegisterComponent(GraphicsComponent* inComponent)
+{
+    graphicsComponents.push_front(inComponent);
+    return graphicsComponents.begin();
+}
+
+void GraphicsModule::UnregisterComponent(const std::list<GraphicsComponent*>::iterator& it)
+{
+    graphicsComponents.erase(it);
 }

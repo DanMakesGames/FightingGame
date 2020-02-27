@@ -9,8 +9,9 @@ const void* AssetManager::LoadAsset(string source, Asset::EAssetType type)
 		{
 			try
 			{
-				DEBUG_PRINT("AM: ASSET FOUND");
+				
 				assetPointer = sourceToPtrMap.at(source);
+				DEBUG_PRINT("AM: ASSET FOUND");
 			}
 			catch (const std::out_of_range & oor)
 			{

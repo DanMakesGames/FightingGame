@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "Actor.h"
 
 Component::Component(Actor* inOwner) : owner(inOwner), localRotation(glm::mat4(1)), localPosition(0)
 {

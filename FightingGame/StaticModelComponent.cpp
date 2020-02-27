@@ -1,4 +1,5 @@
 #include "StaticModelComponent.h"
+#include "Actor.h"
 
 void StaticModelComponent::Initialize()
 {

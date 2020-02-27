@@ -1,20 +1,22 @@
 #pragma once
 #include "Core.h"
-#include "Actor.h"
+#include "Object.h"
 
-class Component
+class Actor;
+
+class Component : public Object
 {
 public:
-	Component(class Actor* inOwner);
+	Component(Actor* inOwner);
 
 	Actor* GetOwner();
-	void SetOwner(class Actor* inOwner);
+	void SetOwner(Actor* inOwner);
 	virtual void Initialize();
 	glm::vec3 localPosition;
 	glm::quat localRotation;
 
 private:
-	class Actor* owner;
+	Actor* owner;
 
 };
 
