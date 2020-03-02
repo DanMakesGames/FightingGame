@@ -22,6 +22,8 @@ public:
 	// Actor position properties
 	glm::vec3 position;
 	glm::quat rotation;
+
+	glm::mat4 GetWorldMatrix();
 	
 private:
 

@@ -2,12 +2,15 @@
 #include "Core.h"
 #include "LightCore.h"
 #include "PointLightComponent.h"
+#include "DirLightComponent.h"
 
 struct LightBlock
 {
 	int numberPointLights;
-	float padding[3];
+	int numberDirLights;
+	float padding[2];
 	PointLight pointLights[MAX_POINT_LIGHT];
+	DirLight dirLights[MAX_DIR_LIGHT];
 
 };
 
@@ -24,11 +27,14 @@ public:
 	void UpdateLightBuffer(const glm::mat4& viewProjMatrix, uint shader);
 
 	std::list<PointLightComponent*>::iterator RegisterPointLight(PointLightComponent* inLight);
-
 	void UnregisterPointLight(const std::list<PointLightComponent*>::iterator& it);
+
+	std::list<DirLightComponent*>::iterator RegisterDirLight(DirLightComponent* inLight);
+	void UnregisterDirLight(const std::list<DirLightComponent*>::iterator& it);
 
 private:
 	std::list<PointLightComponent*> pointLights;
+	std::list<DirLightComponent*> dirLights;
 
 	GLuint lightBlock;
 	GLuint CurrentShader;

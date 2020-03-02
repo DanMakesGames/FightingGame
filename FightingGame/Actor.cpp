@@ -17,3 +17,8 @@ bool Actor::Initialize()
 void Actor::Tick(float deltaTime)
 {
 }
+
+glm::mat4 Actor::GetWorldMatrix()
+{
+	return glm::translate(position) * glm::mat4_cast(rotation) ;
+}

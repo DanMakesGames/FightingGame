@@ -1,5 +1,6 @@
 #include "PointLightComponent.h"
 #include "Master.h"
+#include "Actor.h"
 
 PointLightComponent::PointLightComponent(Actor* inOwner) : LightComponent(inOwner), position(glm::vec3(0)), atten()
 {
@@ -15,5 +16,6 @@ void PointLightComponent::GetPointLightStruct(PointLight* outLight)
 {
 	outLight->base = base;
 	outLight->atten = atten;
-	outLight->position = glm::vec4(position,0);
+	
+	outLight->position = GetOwner()->GetWorldMatrix() * glm::vec4(position,1);
 }

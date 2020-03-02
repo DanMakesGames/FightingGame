@@ -2,6 +2,7 @@
 
 // Constants
 const int MAX_POINT_LIGHTS = 100;
+const int MAX_DIR_LIGHTS = 16;
 
 in vec3 fragPosition;
 in vec3 fragNormal;
@@ -38,10 +39,18 @@ struct PointLight
 	Attenuation atten;
 };
 
+struct DirLight
+{
+	BaseLight base;
+	vec3 dir;
+};
+
 layout (std140) uniform LightBlock
 {
 	int numberPointLights;
+	int numberDirLights;
 	PointLight pointLights[MAX_POINT_LIGHTS];
+	DirLight dirLights[MAX_DIR_LIGHTS];
 };
 
 void main() {
@@ -51,8 +60,13 @@ void main() {
 	
 	for(int index = 0; index < numberPointLights; index++)
 	{
-		vec3 lightDir = normalize(fragPosition - pointLights[index].position);
+		vec3 lightDir = normalize(pointLights[index].position - fragPosition);
 		irradiance += pointLights[index].base.color * max(0, dot(lightDir,fragNormal));
+	}
+	
+	for (int index = 0; index < numberDirLights; index++)
+	{
+		irradiance += dirLights[index].base.color * max(0, dot(-dirLights[index].dir, fragNormal));
 	}
 	
 	// Diffuse reflectance

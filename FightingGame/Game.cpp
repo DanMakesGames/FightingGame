@@ -3,6 +3,7 @@
 #include "Actor.h"
 #include "StaticModelComponent.h"
 #include "PointLightComponent.h"
+#include "DirLightComponent.h"
 #include <ggponet.h>
 
 Game::Game() : master(nullptr)
@@ -38,20 +39,27 @@ void Game::MainLoop()
     testStaticModel1.Initialize();
 
     Actor testActor2;
+    testActor2.position.z = 50;
+    testActor2.position.y = -50;
+    testActor2.position.x = 0;
     StaticModelComponent testStaticModel2(&testActor2);
     testStaticModel2.SetModelSource("Cloud_KH1.obj");
     testStaticModel2.Initialize();
 
     Actor testLight0;
+    testLight0.position = glm::vec3(300, 100, 0);
     PointLightComponent light0(&testLight0);
-    light0.position = glm::vec3(-300,300,800);
     light0.base.color = glm::vec4(glm::vec3(1,0,0),0);
-
     
     Actor testLight1;
+    testLight1.position = glm::vec3(500,800,1000);
     PointLightComponent light1(&testLight1);
-    light1.position = glm::vec3(0, -500, 0);
-    light1.base.color = glm::vec4(glm::vec3(0, 0.4, 0), 0);
+    light1.base.color = glm::vec4(glm::vec3(0, 0.0, 0), 0);
+
+    Actor testLight2;
+    DirLightComponent light2(&testLight2);
+    light2.base.color = glm::vec4(glm::vec3(0, 0, 0), 0);
+    light2.direction = glm::vec3(0,1,0);
     
 	while (!glfwWindowShouldClose(master->graphicsModule.window))
 	{
