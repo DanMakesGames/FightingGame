@@ -17,8 +17,10 @@
 
 #include "Core.h"
 #include "GraphicsComponent.h"
+#include "LightManager.h"
 
 class GraphicsComponent;
+class PointLightComponent;
 
 /*
 Master of all 3d related operations.
@@ -51,6 +53,8 @@ public:
 	std::list<GraphicsComponent*>::iterator RegisterComponent(GraphicsComponent* inComponent);
 	void UnregisterComponent(const std::list<GraphicsComponent*>::iterator& it);
 
+	LightManager lightMangager;
+
 private:
 
 	// GLFW stuff
@@ -69,5 +73,7 @@ private:
 
 	// Refernces to all GraphicsComponents
 	std::list<GraphicsComponent*> graphicsComponents;
+
+	std::list<PointLightComponent*> pointLights;
 };
 

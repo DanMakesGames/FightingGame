@@ -81,6 +81,15 @@
     <ClCompile Include="Master.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LightComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLightComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NetworkModule.h">
@@ -147,6 +156,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Master.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLightComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

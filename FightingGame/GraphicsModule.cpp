@@ -49,6 +49,8 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
 
     shaderProgramID = InitializeShaderProgram(fragmentShaderID, vertexShaderID);
 
+    lightMangager.Initialize(shaderProgramID);
+
     return true;
 }
 
@@ -128,7 +130,8 @@ void GraphicsModule::RenderFrame(float deltaTime)
 
     cam.Update();
 
-    // TODO
+    lightMangager.UpdateLightBuffer(cam.GetViewProjectMtx(), shaderProgramID);
+
     // loop over graphics components and draw the scene.
     for (auto compIt = graphicsComponents.begin(); compIt != graphicsComponents.end();compIt++)
     {

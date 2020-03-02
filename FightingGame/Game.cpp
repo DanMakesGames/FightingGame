@@ -2,6 +2,7 @@
 #include "Master.h"
 #include "Actor.h"
 #include "StaticModelComponent.h"
+#include "PointLightComponent.h"
 #include <ggponet.h>
 
 Game::Game() : master(nullptr)
@@ -40,6 +41,17 @@ void Game::MainLoop()
     StaticModelComponent testStaticModel2(&testActor2);
     testStaticModel2.SetModelSource("Cloud_KH1.obj");
     testStaticModel2.Initialize();
+
+    Actor testLight0;
+    PointLightComponent light0(&testLight0);
+    light0.position = glm::vec3(-300,300,800);
+    light0.base.color = glm::vec4(glm::vec3(1,0,0),0);
+
+    
+    Actor testLight1;
+    PointLightComponent light1(&testLight1);
+    light1.position = glm::vec3(0, -500, 0);
+    light1.base.color = glm::vec4(glm::vec3(0, 0.4, 0), 0);
     
 	while (!glfwWindowShouldClose(master->graphicsModule.window))
 	{

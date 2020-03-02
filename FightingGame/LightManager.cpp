@@ -1,0 +1,78 @@
+#include "LightManager.h"
+
+LightManager::~LightManager()
+{
+    DEBUG_PRINT("Destroy Light Manager");
+    glDeleteBuffers(1, &lightBlock);
+}
+
+void LightManager::Initialize(GLuint shader)
+{
+    // establish the light UBO
+    const uint lightUBOSize = 16 + (100 * 64);
+    GLuint lightBlockLoc = glGetUniformBlockIndex(shader, "LightBlock");
+    glUniformBlockBinding(shader, lightBlockLoc, 0);
+    char buf[30];
+    int len = 0;
+    int size = 0;
+    GLenum type;
+    //glGetActiveUniform(shader,lightBlockLoc,20,&len,&size,&type,buf);
+    glGetActiveUniformBlockiv(shader, lightBlock, GL_UNIFORM_BLOCK_DATA_SIZE, &len);
+    //DEBUG_PRINT(buf << ": " << size);
+    DEBUG_PRINT(len);
+
+
+    glUseProgram(shader);
+    glGenBuffers(1, &lightBlock);
+
+    glBindBuffer(GL_UNIFORM_BUFFER, lightBlock);
+    glBufferData(GL_UNIFORM_BUFFER, len, NULL, GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
+    glBindBufferRange(GL_UNIFORM_BUFFER, 0, lightBlock, 0, 16);
+
+    glUseProgram(0);
+    CurrentShader = shader;
+    //UpdateLightBuffer(shader);
+}
+
+void LightManager::UpdateLightBuffer(const glm::mat4& viewProjMatrix, uint shader)
+{
+    // loop over pointlights and build new list
+
+    LightBlock lightBlockStruct;
+    int pointLightIndex = 0;
+    for (auto it = pointLights.begin(); it != pointLights.end(); it++)
+    {
+        lightBlockStruct.pointLights[pointLightIndex].atten = (*it)->atten;
+        lightBlockStruct.pointLights[pointLightIndex].base = (*it)->base;
+        lightBlockStruct.pointLights[pointLightIndex].position = viewProjMatrix * glm::vec4((*it)->position,1);
+        pointLightIndex++;
+    }
+
+    lightBlockStruct.numberPointLights = pointLightIndex;
+
+    /*
+    DEBUG_PRINT("point " << sizeof(PointLight));
+    DEBUG_PRINT("base " << sizeof(LightBase));
+    DEBUG_PRINT("pos " << sizeof(glm::vec3));
+    DEBUG_PRINT("atten " << sizeof(Attenuation));
+    DEBUG_PRINT("block " << sizeof(LightBlock));
+    */
+
+    glBindBuffer(GL_UNIFORM_BUFFER, lightBlock);
+    glBufferSubData(GL_UNIFORM_BUFFER, 0,sizeof(lightBlockStruct), &lightBlockStruct);
+    glBindBuffer(GL_UNIFORM_BUFFER, 0);
+}
+
+std::list<PointLightComponent*>::iterator LightManager::RegisterPointLight(PointLightComponent* inLight)
+{
+    pointLights.push_front(inLight);
+    //UpdateLightBuffer(CurrentShader);
+    return pointLights.begin();
+}
+
+void LightManager::UnregisterPointLight(const std::list<PointLightComponent*>::iterator& it)
+{
+    pointLights.erase(it);
+}
