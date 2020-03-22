@@ -24,5 +24,6 @@ private:
 	vector<Mesh> meshes;
 
 	vector<std::string> textureFileNames;
+	vector<TextureAsset*> textureAssets;
 };
 

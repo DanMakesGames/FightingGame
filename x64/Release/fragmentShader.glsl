@@ -6,6 +6,7 @@ const int MAX_DIR_LIGHTS = 16;
 
 in vec3 fragPosition;
 in vec3 fragNormal;
+in vec2 fragTexCoord;
 
 uniform vec3 AmbientColor=vec3(0.1);
 uniform vec3 LightDirection=normalize(vec3(0,1,0));
@@ -16,6 +17,8 @@ out vec3 finalColor;
 
 uniform vec3 LightDirection0=normalize(vec3(-1,0,0));
 uniform vec3 LightColor0=vec3(0.3, 0.0, 0.0);
+
+uniform sampler2D texSampler;
 
 // lights (inspired by a tutorial.)
 struct BaseLight
@@ -68,6 +71,8 @@ void main() {
 	{
 		irradiance += dirLights[index].base.color * max(0, dot(-dirLights[index].dir, fragNormal));
 	}
+	
+	irradiance = texture2D(texSampler, fragTexCoord.xy);
 	
 	// Diffuse reflectance
 	vec3 reflectance=irradiance * DiffuseColor;

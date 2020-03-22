@@ -1,5 +1,4 @@
 d:\documents\game projects\fightinggame\fightinggame\x64\release\vc142.pdb
-d:\documents\game projects\fightinggame\fightinggame\x64\release\pointlightcomponent.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\object.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\networkmodule.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\meshasset.obj
@@ -13,6 +12,7 @@ d:\documents\game projects\fightinggame\fightinggame\x64\release\graphicsmodule.
 d:\documents\game projects\fightinggame\fightinggame\x64\release\graphicscomponent.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\gamestate.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\game.obj
+d:\documents\game projects\fightinggame\fightinggame\x64\release\dirlightcomponent.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\component.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\camera.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\audiomodule.obj
@@ -24,6 +24,7 @@ d:\documents\game projects\fightinggame\fightinggame\x64\release\staticmodelcomp
 d:\documents\game projects\fightinggame\fightinggame\x64\release\staticmodelasset.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\skin.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\primitiveasset.obj
+d:\documents\game projects\fightinggame\fightinggame\x64\release\pointlightcomponent.obj
 d:\documents\game projects\fightinggame\x64\release\fightinggame.ipdb
 d:\documents\game projects\fightinggame\x64\release\fightinggame.iobj
 d:\documents\game projects\fightinggame\x64\release\fightinggame.exe
@@ -33,6 +34,5 @@ d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tl
 d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tlog\cl.write.1.tlog
 d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tlog\fightinggame.write.1u.tlog
 d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tlog\link.command.1.tlog
-d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tlog\link.delete.1.tlog
 d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tlog\link.read.1.tlog
 d:\documents\game projects\fightinggame\fightinggame\x64\release\fightinggame.tlog\link.write.1.tlog

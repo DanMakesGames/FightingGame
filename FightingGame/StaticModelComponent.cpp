@@ -1,9 +1,22 @@
 #include "StaticModelComponent.h"
 #include "Actor.h"
+#include "Master.h"
 
 void StaticModelComponent::Initialize()
 {
 	GraphicsModule* graphicsModule = GetGraphicsModule();
+
+	bool bHasTex = false;
+
+	// load textures
+	if (textureFileNames.size() != 0)
+	{
+		bHasTex = true;
+		for (int texIndex = 0; texIndex < textureFileNames.size(); texIndex++)
+		{
+			textureAssets.emplace_back((TextureAsset*)master->assetManager.LoadAsset(textureFileNames[texIndex], Asset::EAssetType::AT_TEXTURE));
+		}
+	}
 
 	// Request the static model asset.
 	modelAsset = (StaticModelAsset*)graphicsModule->assetManager->LoadAsset(modelFileName, Asset::EAssetType::AT_STATIC_MODEL);
@@ -15,11 +28,22 @@ void StaticModelComponent::Initialize()
 	DEBUG_PRINT("Init Component mesh count: " << meshCount);
 
 	meshes.resize(meshCount);
-
+	// create meshes based on model asset.
 	for (int meshIndex = 0; meshIndex < meshCount; meshIndex++)
 	{
-		DEBUG_PRINT("init mesh "<<meshIndex);
-		meshes[meshIndex].Initialize(&(meshAssets[meshIndex]));
+		DEBUG_PRINT("init mesh " << meshIndex);
+
+		// look to see if this mesh needs a texture.
+		if (bHasTex && meshAssets[meshIndex].materialIndex < textureAssets.size())
+		{
+			uint matIndex = meshAssets[meshIndex].materialIndex;	
+			meshes[meshIndex].Initialize(&(meshAssets[meshIndex]), textureAssets[matIndex]);
+		}
+		// no texture initialization
+		else
+		{
+			meshes[meshIndex].Initialize(&(meshAssets[meshIndex]));
+		}
 	}
 }
 

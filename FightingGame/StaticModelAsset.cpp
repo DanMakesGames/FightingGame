@@ -29,7 +29,7 @@ bool StaticModelAsset::InitializeMeshesFromScene(const aiScene* scene)
 	for (int meshIndex = 0; meshIndex < scene->mNumMeshes; meshIndex++)
 	{
 		//meshes.emplace_back();
-		DEBUG_PRINT("Name:" << scene->mMeshes[meshIndex]->mName.C_Str() << "Tex ID: " << scene->mMeshes[meshIndex]->mMaterialIndex);
+		DEBUG_PRINT("Name:" << scene->mMeshes[meshIndex]->mName.C_Str() << " Tex ID: " << scene->mMeshes[meshIndex]->mMaterialIndex);
 		meshAssets[meshIndex].InitMesh(meshIndex, scene->mMeshes[meshIndex]);
 	}
 

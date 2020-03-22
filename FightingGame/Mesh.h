@@ -3,6 +3,7 @@
 #include "glm/gtx/transform.hpp"
 #include "Core.h"
 #include "MeshAsset.h"
+#include "TextureAsset.h"
 #include <vector>
 
 /*
@@ -19,25 +20,33 @@ public:
 
 	void Draw(const glm::mat4 &modelMatrix, const glm::mat4 &viewProjMatrix, uint shader);
 
-	void SetBuffers(const ModelVertex* vertexData, const uint& vertexDataCount, const uint* indexData, const uint& indexDataCount);
-	void SetBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData);
+	void SetPrimativeBuffers(const ModelVertex* vertexData, const uint& vertexDataCount, const uint* indexData, const uint& indexDataCount);
+	void SetPrimativeBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData);
+	void SetTextureBuffers(const void* texData, const uint& texWidth, const uint& texHeight);
+
 	
 	// debug tool to create a box mesh.
 	void MakeBox(const glm::vec3& boxMin, const glm::vec3& boxMax);
 
 	// Link this mesh with a meshAsset.
 	bool Initialize(const MeshAsset* inMeshAsset);
+	bool Initialize(const MeshAsset* inMeshAsset, const TextureAsset* inTexAsset);
 
 private:
 	// indexes of the opengl buffers
 	uint vertexBuffer;
 	uint indexBuffer;
+	uint texBuffer;
 
 	// assets.
 	const MeshAsset* meshAsset;
+	// null if no texture
+	const TextureAsset* texAsset;
 
 	// fast access data pointer. Only use after initalization. Supports direct acces to asset data.
 	MeshDataPointers meshData;
+
+	TextureData texData;
 	
 	// Count of elements in to render
 	int Count;

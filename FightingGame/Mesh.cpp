@@ -1,10 +1,11 @@
 #include "Mesh.h"
 
-Mesh::Mesh() : meshAsset(nullptr)
+Mesh::Mesh() : meshAsset(nullptr), texAsset(nullptr)
 {
 	// set up index and vertex buffers
 	glGenBuffers(1, &vertexBuffer);
 	glGenBuffers(1, &indexBuffer);
+	glGenTextures(1, &texBuffer);
 	Count = 0;
 }
 
@@ -12,15 +13,32 @@ Mesh::~Mesh()
 {
 	glDeleteBuffers(1, &vertexBuffer);
 	glDeleteBuffers(1, &indexBuffer);
+	glDeleteTextures(1, &texBuffer);
 }
 
 bool Mesh::Initialize(const MeshAsset* inMeshAsset)
 {
 	meshAsset = inMeshAsset;
-	//meshAsset = nullptr;
 	meshData = inMeshAsset->GetMeshDataPointers();
 
-	SetBuffers(meshData.vertices, meshData.verticesCount, meshData.indices, meshData.indicesCount);
+	SetPrimativeBuffers(meshData.vertices, meshData.verticesCount, meshData.indices, meshData.indicesCount);
+
+	return true;
+}
+
+bool Mesh::Initialize(const MeshAsset* inMeshAsset, const TextureAsset* inTexAsset)
+{
+	meshAsset = inMeshAsset;
+	meshData = inMeshAsset->GetMeshDataPointers();
+
+	SetPrimativeBuffers(meshData.vertices, meshData.verticesCount, meshData.indices, meshData.indicesCount);
+
+	if (inTexAsset != nullptr)
+	{
+		texAsset = inTexAsset;
+		texData = texAsset->GetTextureData();
+		SetTextureBuffers(texData.data, texData.width, texData.height);
+	}
 
 	return true;
 }
@@ -44,16 +62,29 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 	// structure of the model vertex attributes
 	uint positionLocation = 0;
 	uint normalLocation = 1;
+	uint UVCoordLocation = 2;
 
 	// set position attribute in the GL_ARRAY_BUFFER, which is the buffer being used for vertex attributes
 	glEnableVertexAttribArray(positionLocation);
+	// the stride is the size to hop between elements of the generic array. It is the size of each vert.
+	// the final property is a pointer to the first element. Normal is after position, so normal starts 
+	// at 3 * 4 bytes = 12 bytes into the array.
 	glVertexAttribPointer(positionLocation, 3, GL_FLOAT, GL_FALSE, sizeof(ModelVertex), 0);
 
 	// ditto for normal vertex attribute
 	glEnableVertexAttribArray(normalLocation);
 	glVertexAttribPointer(normalLocation, 3, GL_FLOAT, GL_FALSE, sizeof(ModelVertex), (void*)12);
 
-	//glDrawArrays(GL_TRIANGLES, 0, Count);
+	glEnableVertexAttribArray(UVCoordLocation);
+	glVertexAttribPointer(UVCoordLocation, 2, GL_FLOAT, GL_FALSE, sizeof(ModelVertex), (void*)24);
+
+	// bind texture if one exists
+	if (texAsset != nullptr)
+	{
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texBuffer);
+	}
+
 	glDrawElements(GL_TRIANGLES, Count, GL_UNSIGNED_INT, 0);
 
 	// clean up state aka debind the buffers and the program.
@@ -67,7 +98,7 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 	glUseProgram(0);
 }
 
-void Mesh::SetBuffers(const ModelVertex* vertexData, const uint& vertexDataCount, const uint* indexData, const uint& indexDataCount)
+void Mesh::SetPrimativeBuffers(const ModelVertex* vertexData, const uint& vertexDataCount, const uint* indexData, const uint& indexDataCount)
 {
 	Count = indexDataCount;
 
@@ -79,21 +110,19 @@ void Mesh::SetBuffers(const ModelVertex* vertexData, const uint& vertexDataCount
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexDataCount * sizeof(uint), indexData, GL_STATIC_DRAW);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
 }
 
-void Mesh::SetBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData)
+void Mesh::SetPrimativeBuffers(const std::vector<ModelVertex>& vertexData, const std::vector<uint>& indexData)
 {
-	Count = (int)indexData.size();
+	SetPrimativeBuffers(&vertexData[0], vertexData.size(), &indexData[0], indexData.size());
+}
 
-	// store vertex data in buffer
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-	glBufferData(GL_ARRAY_BUFFER, vertexData.size() * sizeof(ModelVertex),&vertexData[0],GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indexData.size() * sizeof(uint), &indexData[0], GL_STATIC_DRAW);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+void Mesh::SetTextureBuffers(const void* texPixelData, const uint& texWidth, const uint& texHeight)
+{
+	glBindTexture(GL_TEXTURE_2D, texBuffer);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, texPixelData);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 }
 
@@ -148,5 +177,5 @@ void Mesh::MakeBox(const glm::vec3& boxMin, const glm::vec3& boxMax) {
 	};
 
 	// Create vertex & index buffers
-	SetBuffers(vtx, idx);
+	SetPrimativeBuffers(vtx, idx);
 }

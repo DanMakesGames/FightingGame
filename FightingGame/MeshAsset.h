@@ -2,9 +2,11 @@
 #include "Asset.h"
 
 // info needed to be sent to the 
-struct ModelVertex {
+struct ModelVertex 
+{
 	glm::vec3 position;
 	glm::vec3 normal;
+	glm::vec2 UVCoord;
 };
 
 struct MeshDataPointers
@@ -45,6 +47,8 @@ public:
 	void InitMesh(uint inIndex, const aiMesh* inAiMesh);
 
 	MeshDataPointers GetMeshDataPointers() const;
+
+	uint materialIndex;
 
 private:
 	std::vector<ModelVertex> vertices;

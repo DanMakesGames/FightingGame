@@ -37,6 +37,8 @@ void MeshAsset::InitMesh(uint inIndex, const aiMesh* inAiMesh)
 			triangles.push_back(inAiMesh->mFaces[i].mIndices[2]);
 		}
 	}
+
+	materialIndex = inAiMesh->mMaterialIndex;
 }
 
 MeshDataPointers MeshAsset::GetMeshDataPointers() const

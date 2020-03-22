@@ -18,7 +18,11 @@ class Asset
 public:
 	enum class EAssetType
 	{
-		AT_STATIC_MODEL
+		AT_STATIC_MODEL,
+		AT_SKELETAL_MODEL,
+		AT_TEXTURE,
+		AT_MATERIAL,
+		AT_SOUND
 	};
 
 	Asset(string inSource, EAssetType inType);

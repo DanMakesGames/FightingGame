@@ -21,7 +21,7 @@ public:
 	// Request and asset to be loaded.
 	// looks for asset. If not found it loads the asset from the source.
 	// If error occurs, return nullptr.
-	const void* LoadAsset(string source, Asset::EAssetType type);
+	const void* LoadAsset(const string& source, Asset::EAssetType type);
 
 private:
 
@@ -29,7 +29,10 @@ private:
 	// storage of assets. A new category will need to be created for each asset type
 	std::list<StaticModelAsset> staticModels;
 	//std::vector<SkeletalModelAsset> skeletalModels;
-	std::vector<TextureAsset> textures;
+	std::list<TextureAsset> textures;
+	
+	template<class T>
+	void* GetOrLoad(const string& source,const Asset::EAssetType& type, std::list<T>& assetList,std::unordered_map<string,void*>& srcToPtrMap);
 
 };
 
