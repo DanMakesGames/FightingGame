@@ -16,6 +16,13 @@ void MeshAsset::InitMesh(uint inIndex, const aiMesh* inAiMesh)
 
 		vertices[i].position = glm::vec3(inAiMesh->mVertices[i].x, inAiMesh->mVertices[i].y, inAiMesh->mVertices[i].z);
 		vertices[i].normal = glm::vec3(inAiMesh->mNormals[i].x, inAiMesh->mNormals[i].y, inAiMesh->mNormals[i].z);
+		
+		// load UV coordinates.
+		if (inAiMesh->mTextureCoords[0] != nullptr)
+		{
+			//DEBUG_PRINT("uv: "<< to_string(glm::vec3(inAiMesh->mTextureCoords[0][i].x, inAiMesh->mTextureCoords[0][i].y, inAiMesh->mTextureCoords[0][i].z)));
+			vertices[i].UVCoord = glm::vec2(inAiMesh->mTextureCoords[0][i].x, 1-inAiMesh->mTextureCoords[0][i].y);
+		}
 	}
 
 	// load primatives
@@ -39,6 +46,8 @@ void MeshAsset::InitMesh(uint inIndex, const aiMesh* inAiMesh)
 	}
 
 	materialIndex = inAiMesh->mMaterialIndex;
+
+
 }
 
 MeshDataPointers MeshAsset::GetMeshDataPointers() const

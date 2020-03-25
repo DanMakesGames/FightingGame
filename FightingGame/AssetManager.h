@@ -13,6 +13,8 @@ Handles the pre-loading, and storage of loaded assets.
 
 Usage of linked lists for storing assets should ensure pointer safety.
 TODO: If the LoadAsset search takes too long, create a unordered_map linking source name and assetPointer.
+
+Only 1 should exist at a time or else things will get weird due to static references. Shouldn't be a problem.
 */
 class AssetManager
 {

@@ -9,12 +9,12 @@ void StaticModelComponent::Initialize()
 	bool bHasTex = false;
 
 	// load textures
-	if (textureFileNames.size() != 0)
+	if (materialFileNames.size() != 0)
 	{
 		bHasTex = true;
-		for (int texIndex = 0; texIndex < textureFileNames.size(); texIndex++)
+		for (int matIndex = 0; matIndex < materialFileNames.size(); matIndex++)
 		{
-			textureAssets.emplace_back((TextureAsset*)master->assetManager.LoadAsset(textureFileNames[texIndex], Asset::EAssetType::AT_TEXTURE));
+			materialAssets.emplace_back((TextureAsset*)master->assetManager.LoadAsset(materialFileNames[matIndex], Asset::EAssetType::AT_MATERIAL));
 		}
 	}
 
@@ -34,10 +34,10 @@ void StaticModelComponent::Initialize()
 		DEBUG_PRINT("init mesh " << meshIndex);
 
 		// look to see if this mesh needs a texture.
-		if (bHasTex && meshAssets[meshIndex].materialIndex < textureAssets.size())
+		if (bHasTex && meshAssets[meshIndex].materialIndex < materialAssets.size())
 		{
 			uint matIndex = meshAssets[meshIndex].materialIndex;	
-			meshes[meshIndex].Initialize(&(meshAssets[meshIndex]), textureAssets[matIndex]);
+			meshes[meshIndex].Initialize(&(meshAssets[meshIndex]), materialAssets[matIndex]);
 		}
 		// no texture initialization
 		else

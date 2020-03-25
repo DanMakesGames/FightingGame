@@ -7,8 +7,11 @@ Master::Master() : graphicsModule(), assetManager(), currentGame()
 bool Master::Initialize() 
 {
 	DEBUG_PRINT("Master Init");
-	Object::master = this;
 
+	// Establish Master Access.
+	Object::master = this;
+	Asset::master = this;
+	
 	if (!graphicsModule.Initialize(&assetManager))
 		return false;
 

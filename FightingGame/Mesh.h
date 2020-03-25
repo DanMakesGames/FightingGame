@@ -4,6 +4,7 @@
 #include "Core.h"
 #include "MeshAsset.h"
 #include "TextureAsset.h"
+#include "MaterialAsset.h"
 #include <vector>
 
 /*
@@ -31,6 +32,7 @@ public:
 	// Link this mesh with a meshAsset.
 	bool Initialize(const MeshAsset* inMeshAsset);
 	bool Initialize(const MeshAsset* inMeshAsset, const TextureAsset* inTexAsset);
+	bool Initialize(const MeshAsset* inMeshAsset, const MaterialAsset* inTexAsset);
 
 private:
 	// indexes of the opengl buffers
@@ -42,6 +44,8 @@ private:
 	const MeshAsset* meshAsset;
 	// null if no texture
 	const TextureAsset* texAsset;
+	// null if no mat. In that case default values will be used.
+	const MaterialAsset* matAsset;
 
 	// fast access data pointer. Only use after initalization. Supports direct acces to asset data.
 	MeshDataPointers meshData;

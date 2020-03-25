@@ -43,6 +43,17 @@ bool Mesh::Initialize(const MeshAsset* inMeshAsset, const TextureAsset* inTexAss
 	return true;
 }
 
+bool Mesh::Initialize(const MeshAsset* inMeshAsset, const MaterialAsset* inMatAsset)
+{
+	meshAsset = inMeshAsset;
+	meshData = inMeshAsset->GetMeshDataPointers();
+
+	SetPrimativeBuffers(meshData.vertices, meshData.verticesCount, meshData.indices, meshData.indicesCount);
+
+	matAsset = inMatAsset;
+	
+}
+
 void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, uint shader)
 {
 	// set shader program to use
@@ -54,6 +65,8 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 
 	// set up view projection martrix for camera control.
 	glUniformMatrix4fv(glGetUniformLocation(shader, "projMatrix"), 1, false, (float*)&viewProjMatrix);
+
+	glUniform1i(glGetUniformLocation(shader, "texSampler"), 0);
 
 	// bind the vertex and index buffers
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -81,8 +94,14 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 	// bind texture if one exists
 	if (texAsset != nullptr)
 	{
+		//SetTextureBuffers(texData.data,texData.width, texData.height);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texBuffer);
+		glUniform1i(glGetUniformLocation(shader, "bIsTextured"), 1);
+	}
+	else
+	{
+		glUniform1i(glGetUniformLocation(shader, "bIsTextured"), 0);
 	}
 
 	glDrawElements(GL_TRIANGLES, Count, GL_UNSIGNED_INT, 0);
@@ -94,6 +113,7 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 	// unbind buffers
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	glUseProgram(0);
 }
@@ -123,6 +143,8 @@ void Mesh::SetTextureBuffers(const void* texPixelData, const uint& texWidth, con
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, texWidth, texHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, texPixelData);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	DEBUG_PRINT("texbuff: "<< texBuffer);
 
 }
 

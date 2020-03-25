@@ -2,6 +2,8 @@
 #include "GraphicsComponent.h"
 #include "AssetManager.h"
 #include "Mesh.h"
+#include "MaterialAsset.h"
+
 class StaticModelComponent : public GraphicsComponent
 {
 public:
@@ -16,14 +18,14 @@ public:
 	void Initialize();
 
 	void Draw(const glm::mat4& modelMatrix, const glm::mat4& viewProjMatrix, uint shader);
-
+	vector<std::string> materialFileNames;
 private:
 
 	std::string modelFileName;
 	StaticModelAsset* modelAsset;
 	vector<Mesh> meshes;
 
-	vector<std::string> textureFileNames;
-	vector<TextureAsset*> textureAssets;
+
+	vector<MaterialAsset*> materialAssets;
 };
 

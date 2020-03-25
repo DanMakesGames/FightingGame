@@ -32,6 +32,9 @@ public:
 	string GetSource();
 	void SetSource(string sourceName);
 
+	// Master access. Allows access to the owning assetManager in particular.
+	static class Master* master;
+
 private:
 
 	// the file name of the asset.

@@ -13,12 +13,13 @@ uniform vec3 LightDirection=normalize(vec3(0,1,0));
 uniform vec3 LightColor=vec3(0,0.3,0);
 uniform vec3 DiffuseColor=vec3(1);
 
-out vec3 finalColor;
+out vec4 finalColor;
 
 uniform vec3 LightDirection0=normalize(vec3(-1,0,0));
 uniform vec3 LightColor0=vec3(0.3, 0.0, 0.0);
 
 uniform sampler2D texSampler;
+uniform int bIsTextured=0;
 
 // lights (inspired by a tutorial.)
 struct BaseLight
@@ -56,10 +57,22 @@ layout (std140) uniform LightBlock
 	DirLight dirLights[MAX_DIR_LIGHTS];
 };
 
+// Material
+struct Material 
+{
+	vec3 ambient;
+	vec3 diffuse;
+	vec3 specular;
+	float shininess;
+};
+
+uniform Material material;
+
 void main() {
 	// Compute irradiance (sum of ambient & direct lighting)
 	//vec3 irradiance=AmbientColor + LightColor * max(0,dot(LightDirection,fragNormal)) + LightColor0 * max(0,dot(LightDirection0,fragNormal));
 	vec3 irradiance=AmbientColor;
+	vec4 texColor;
 	
 	for(int index = 0; index < numberPointLights; index++)
 	{
@@ -72,11 +85,16 @@ void main() {
 		irradiance += dirLights[index].base.color * max(0, dot(-dirLights[index].dir, fragNormal));
 	}
 	
-	irradiance = texture2D(texSampler, fragTexCoord.xy);
+	if (bIsTextured == 1)
+	{
+		texColor = texture2D(texSampler, fragTexCoord.xy);
+		//texColor = texture2D(texSampler, vec2(0.25,0.25));
+	}
 	
 	// Diffuse reflectance
 	vec3 reflectance=irradiance * DiffuseColor;
 
 	// Gamma correction
-	gl_FragColor=vec4(sqrt(reflectance),1);
+	//finalColor = vec4(sqrt(reflectance),1) + texColor;
+	finalColor = texColor;
 }
