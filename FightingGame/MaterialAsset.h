@@ -5,7 +5,7 @@
 
 // Properties of Material file format 
 // maximum length of any element in an material file
-#define MAX_MAT_FILE_ELEM_LENGTH 20
+#define MAX_MAT_FILE_ELEM_LENGTH 130
 #define MAX_MAT_FILE_ELEMENTS 6
 #define MAT_FILE_DELIM " "
 #define TEXTURE_IDENT "texture"
@@ -45,7 +45,7 @@ public:
 		{}
 	};
 
-	const MaterialData& GetData();
+	const MaterialData& GetData() const;
 
 private:
 	MaterialData data;

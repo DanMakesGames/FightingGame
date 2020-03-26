@@ -51,7 +51,19 @@ bool Mesh::Initialize(const MeshAsset* inMeshAsset, const MaterialAsset* inMatAs
 	SetPrimativeBuffers(meshData.vertices, meshData.verticesCount, meshData.indices, meshData.indicesCount);
 
 	matAsset = inMatAsset;
+
+	if (inMatAsset != nullptr)
+	{
+		MaterialAsset::MaterialData matData = inMatAsset->GetData();
+		if (matData.texture != nullptr)
+		{
+			texAsset = matData.texture;
+			texData = texAsset->GetTextureData();
+			SetTextureBuffers(texData.data, texData.width, texData.height);
+		}
+	}
 	
+	return true;
 }
 
 void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, uint shader)

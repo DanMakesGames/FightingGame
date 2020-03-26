@@ -1,5 +1,7 @@
 #pragma once
 #include "Core.h"
+
+class Master;
 /*
 Responsibilites: Loading the asset from file. Storing the asset's information.
 
@@ -33,7 +35,7 @@ public:
 	void SetSource(string sourceName);
 
 	// Master access. Allows access to the owning assetManager in particular.
-	static class Master* master;
+	static Master* master;
 
 private:
 

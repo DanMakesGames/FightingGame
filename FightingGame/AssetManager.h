@@ -4,6 +4,7 @@
 #include "Asset.h"
 #include "StaticModelAsset.h"
 #include "TextureAsset.h"
+#include "MaterialAsset.h"
 #include <unordered_map>
 
 
@@ -32,7 +33,7 @@ private:
 	std::list<StaticModelAsset> staticModels;
 	//std::vector<SkeletalModelAsset> skeletalModels;
 	std::list<TextureAsset> textures;
-	
+	std::list<MaterialAsset> materials;
 	template<class T>
 	void* GetOrLoad(const string& source,const Asset::EAssetType& type, std::list<T>& assetList,std::unordered_map<string,void*>& srcToPtrMap);
 

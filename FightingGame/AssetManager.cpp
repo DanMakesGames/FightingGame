@@ -6,7 +6,7 @@ const void* AssetManager::LoadAsset(const string& source, Asset::EAssetType type
 	switch (type)
 	{
 	case Asset::EAssetType::AT_STATIC_MODEL:
-	{	
+	{
 		assetPointer = GetOrLoad<StaticModelAsset>(source, type, staticModels, sourceToPtrMap);
 	}
 	break;
@@ -15,8 +15,13 @@ const void* AssetManager::LoadAsset(const string& source, Asset::EAssetType type
 		assetPointer = GetOrLoad<TextureAsset>(source, type, textures, sourceToPtrMap);
 	}
 	break;
-	}
 
+	case Asset::EAssetType::AT_MATERIAL:
+	{
+		assetPointer = GetOrLoad<MaterialAsset>(source, type, materials, sourceToPtrMap);
+	}
+	break;
+	}
 	return assetPointer;
 }
 

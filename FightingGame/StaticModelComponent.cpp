@@ -14,7 +14,7 @@ void StaticModelComponent::Initialize()
 		bHasTex = true;
 		for (int matIndex = 0; matIndex < materialFileNames.size(); matIndex++)
 		{
-			materialAssets.emplace_back((TextureAsset*)master->assetManager.LoadAsset(materialFileNames[matIndex], Asset::EAssetType::AT_MATERIAL));
+			materialAssets.emplace_back((MaterialAsset*)master->assetManager.LoadAsset(materialFileNames[matIndex], Asset::EAssetType::AT_MATERIAL));
 		}
 	}
 

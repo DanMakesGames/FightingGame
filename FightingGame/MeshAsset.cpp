@@ -21,7 +21,7 @@ void MeshAsset::InitMesh(uint inIndex, const aiMesh* inAiMesh)
 		if (inAiMesh->mTextureCoords[0] != nullptr)
 		{
 			//DEBUG_PRINT("uv: "<< to_string(glm::vec3(inAiMesh->mTextureCoords[0][i].x, inAiMesh->mTextureCoords[0][i].y, inAiMesh->mTextureCoords[0][i].z)));
-			vertices[i].UVCoord = glm::vec2(inAiMesh->mTextureCoords[0][i].x, 1-inAiMesh->mTextureCoords[0][i].y);
+			vertices[i].UVCoord = glm::vec2(inAiMesh->mTextureCoords[0][i].x, inAiMesh->mTextureCoords[0][i].y);
 		}
 	}
 

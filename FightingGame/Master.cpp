@@ -1,5 +1,5 @@
 #include "Master.h"
-
+#include "Asset.h"
 Master::Master() : graphicsModule(), assetManager(), currentGame()
 {
 }

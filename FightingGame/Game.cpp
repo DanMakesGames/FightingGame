@@ -46,6 +46,8 @@ void Game::MainLoop()
     testActor2.position.y = -50;
     testActor2.position.x = 0;
     StaticModelComponent testStaticModel2(&testActor2);
+    
+    /*
     testStaticModel2.textureFileNames.push_back("texture000.png");
     testStaticModel2.textureFileNames.push_back("texture001.png");
     
@@ -81,8 +83,19 @@ void Game::MainLoop()
     
     testStaticModel2.textureFileNames.push_back("texture011.png");
     
+    
     testStaticModel2.SetModelSource("Cloud_KH1.obj");
     testStaticModel2.Initialize();
+    */
+
+    Actor testActor3;
+    StaticModelComponent testStaticModel1(&testActor3);
+    
+    testStaticModel1.SetModelSource("tvModel.fbx");
+    testStaticModel1.materialFileNames.push_back("tvMat.mat");
+    testStaticModel1.Initialize();
+
+
 
     Actor testLight0;
     testLight0.position = glm::vec3(300, 100, 0);

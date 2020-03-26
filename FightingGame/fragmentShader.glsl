@@ -57,6 +57,17 @@ layout (std140) uniform LightBlock
 	DirLight dirLights[MAX_DIR_LIGHTS];
 };
 
+// Material
+struct Material 
+{
+	vec3 ambient;
+	vec3 diffuse;
+	vec3 specular;
+	float shininess;
+};
+
+uniform Material material;
+
 void main() {
 	// Compute irradiance (sum of ambient & direct lighting)
 	//vec3 irradiance=AmbientColor + LightColor * max(0,dot(LightDirection,fragNormal)) + LightColor0 * max(0,dot(LightDirection0,fragNormal));
@@ -76,13 +87,18 @@ void main() {
 	
 	if (bIsTextured == 1)
 	{
-		//texColor = texture2D(texSampler, fragTexCoord.xy);
-		texColor = texture2D(texSampler, vec2(0.5,0.5));
+		texColor = texture2D(texSampler, fragTexCoord.xy);
+		//texColor = texture2D(texSampler, vec2(0.25,0.25));
+	}
+	else
+	{
+		texColor = vec4(AmbientColor,0);
 	}
 	
 	// Diffuse reflectance
 	vec3 reflectance=irradiance * DiffuseColor;
 
 	// Gamma correction
-	finalColor = vec4(sqrt(reflectance),1) + texColor;
+	//finalColor = vec4(sqrt(reflectance),1) + texColor;
+	finalColor = texColor;
 }

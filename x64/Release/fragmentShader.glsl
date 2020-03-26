@@ -90,6 +90,10 @@ void main() {
 		texColor = texture2D(texSampler, fragTexCoord.xy);
 		//texColor = texture2D(texSampler, vec2(0.25,0.25));
 	}
+	else
+	{
+		texColor = vec4(AmbientColor,0);
+	}
 	
 	// Diffuse reflectance
 	vec3 reflectance=irradiance * DiffuseColor;
