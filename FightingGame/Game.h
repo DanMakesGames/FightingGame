@@ -16,7 +16,7 @@ public:
 
 	void MainLoop();
 
-	bool AdvanceFrame(int flags);
+	bool AdvanceFrame(int flags, float deltaTime);
 
 	void Tick();
 	

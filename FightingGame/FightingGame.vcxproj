@@ -169,8 +169,10 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AudioModule.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DirLightComponent.cpp" />
+    <ClCompile Include="FreeCam.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GraphicsComponent.cpp" />
@@ -198,9 +200,11 @@
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AudioModule.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="DirLightComponent.h" />
+    <ClInclude Include="FreeCam.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GraphicsComponent.h" />

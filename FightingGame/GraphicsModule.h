@@ -17,6 +17,7 @@
 
 #include "Core.h"
 #include "GraphicsComponent.h"
+#include "CameraComponent.h"
 #include "LightManager.h"
 
 class GraphicsComponent;
@@ -53,7 +54,14 @@ public:
 	std::list<GraphicsComponent*>::iterator RegisterComponent(GraphicsComponent* inComponent);
 	void UnregisterComponent(const std::list<GraphicsComponent*>::iterator& it);
 
+	std::list<CameraComponent*>::iterator RegisterCamera(CameraComponent* inComponent);
+	void UnregisterCamera(const std::list<CameraComponent*>::iterator& regIndex);
+
 	LightManager lightMangager;
+
+	bool SetActiveCamera(CameraComponent* inCam);
+
+	glm::vec2 GetWindowDim();
 
 private:
 
@@ -73,7 +81,8 @@ private:
 
 	// Refernces to all GraphicsComponents
 	std::list<GraphicsComponent*> graphicsComponents;
+	std::list<CameraComponent*> cameraComponents;
+	CameraComponent* activeCamera;
 
-	std::list<PointLightComponent*> pointLights;
 };
 

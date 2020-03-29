@@ -16,3 +16,5 @@ void Component::SetOwner(Actor* inOwner)
 }
 
 void Component::Initialize() {}
+
+void Component::Tick(float deltaTime) {}

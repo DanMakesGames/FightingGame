@@ -12,6 +12,7 @@ public:
 	Actor* GetOwner();
 	void SetOwner(Actor* inOwner);
 	virtual void Initialize();
+	virtual void Tick(float deltaTime);
 	glm::vec3 localPosition;
 	glm::quat localRotation;
 

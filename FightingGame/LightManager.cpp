@@ -45,9 +45,6 @@ void LightManager::UpdateLightBuffer(const glm::mat4& viewProjMatrix, uint shade
     for (auto it = pointLights.begin(); it != pointLights.end(); it++)
     {
         (*it)->GetPointLightStruct(&(lightBlockStruct.pointLights[pointLightIndex]));
-        //lightBlockStruct.pointLights[pointLightIndex].atten = (*it)->atten;
-        //lightBlockStruct.pointLights[pointLightIndex].base = (*it)->base;
-        //lightBlockStruct.pointLights[pointLightIndex].position = viewProjMatrix * glm::vec4((*it)->position,1);
         lightBlockStruct.pointLights[pointLightIndex].position = viewProjMatrix * lightBlockStruct.pointLights[pointLightIndex].position;
         pointLightIndex++;
     }
@@ -61,8 +58,6 @@ void LightManager::UpdateLightBuffer(const glm::mat4& viewProjMatrix, uint shade
     lightBlockStruct.numberPointLights = pointLightIndex;
     lightBlockStruct.numberDirLights = dirLightIndex;
 
-
-
     glBindBuffer(GL_UNIFORM_BUFFER, lightBlock);
     glBufferSubData(GL_UNIFORM_BUFFER, 0,sizeof(lightBlockStruct), &lightBlockStruct);
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
@@ -71,7 +66,6 @@ void LightManager::UpdateLightBuffer(const glm::mat4& viewProjMatrix, uint shade
 std::list<PointLightComponent*>::iterator LightManager::RegisterPointLight(PointLightComponent* inLight)
 {
     pointLights.push_front(inLight);
-    //UpdateLightBuffer(CurrentShader);
     return pointLights.begin();
 }
 

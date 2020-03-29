@@ -8,18 +8,12 @@ in vec3 fragPosition;
 in vec3 fragNormal;
 in vec2 fragTexCoord;
 
-uniform vec3 AmbientColor=vec3(0.1);
-uniform vec3 LightDirection=normalize(vec3(0,1,0));
-uniform vec3 LightColor=vec3(0,0.3,0);
-uniform vec3 DiffuseColor=vec3(1);
-
 out vec4 finalColor;
-
-uniform vec3 LightDirection0=normalize(vec3(-1,0,0));
-uniform vec3 LightColor0=vec3(0.3, 0.0, 0.0);
 
 uniform sampler2D texSampler;
 uniform int bIsTextured=0;
+
+uniform vec3 eyePos;
 
 // lights (inspired by a tutorial.)
 struct BaseLight
@@ -68,37 +62,41 @@ struct Material
 
 uniform Material material;
 
-void main() {
-	// Compute irradiance (sum of ambient & direct lighting)
-	//vec3 irradiance=AmbientColor + LightColor * max(0,dot(LightDirection,fragNormal)) + LightColor0 * max(0,dot(LightDirection0,fragNormal));
-	vec3 irradiance=AmbientColor;
-	vec4 texColor;
+vec4 ComputeLight(BaseLight light, vec3 normal, vec3 lightDir)
+{
+	vec4 ambientColor = vec4(light.color * light.ambientIntensity, 1.0f);
+	float diffuseFactor = dot(normal, lightDir);
+	vec4 diffuseColor = vec4(light.color * light.diffuseIntensity * material.diffuse * max(diffuseFactor,0.0f), 1.0f);
+	return ambientColor + diffuseColor;
+	//return ambientColor;
+	//return diffuseColor;
+}
+
+void main() 
+{
+	vec4 texColor = vec4(1,1,1,1);
+	
+	vec4 totalColor = vec4(0,0,0,0);
 	
 	for(int index = 0; index < numberPointLights; index++)
 	{
 		vec3 lightDir = normalize(pointLights[index].position - fragPosition);
-		irradiance += pointLights[index].base.color * max(0, dot(lightDir,fragNormal));
+		totalColor += ComputeLight(pointLights[index].base, fragNormal, lightDir);
 	}
 	
 	for (int index = 0; index < numberDirLights; index++)
 	{
-		irradiance += dirLights[index].base.color * max(0, dot(-dirLights[index].dir, fragNormal));
+		totalColor += ComputeLight(dirLights[index].base, fragNormal, -dirLights[index].dir);
 	}
 	
 	if (bIsTextured == 1)
 	{
 		texColor = texture2D(texSampler, fragTexCoord.xy);
-		//texColor = texture2D(texSampler, vec2(0.25,0.25));
-	}
-	else
-	{
-		texColor = vec4(AmbientColor,0);
 	}
 	
-	// Diffuse reflectance
-	vec3 reflectance=irradiance * DiffuseColor;
-
-	// Gamma correction
-	//finalColor = vec4(sqrt(reflectance),1) + texColor;
-	finalColor = texColor;
+	totalColor.w = 1.0f;
+	finalColor = (texColor * totalColor) + vec4(material.ambient,1.0f);
+	finalColor.w = 1.0f;
+	//finalColor = texColor;
+	//finalColor = (texColor * totalColor);
 }

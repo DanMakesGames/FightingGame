@@ -24,7 +24,8 @@ public:
 	glm::quat rotation;
 
 	glm::mat4 GetWorldMatrix();
-	
+	void AttachComponent(Component* inComp);
+
 private:
 
 	std::vector<Component*> components;

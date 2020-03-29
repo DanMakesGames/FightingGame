@@ -1,5 +1,4 @@
 d:\documents\game projects\fightinggame\fightinggame\x64\release\vc142.pdb
-d:\documents\game projects\fightinggame\fightinggame\x64\release\networkmodule.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\meshasset.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\mesh.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\materialasset.obj
@@ -14,6 +13,7 @@ d:\documents\game projects\fightinggame\fightinggame\x64\release\gamestate.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\game.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\dirlightcomponent.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\component.obj
+d:\documents\game projects\fightinggame\fightinggame\x64\release\cameracomponent.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\camera.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\audiomodule.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\assetmanager.obj
@@ -26,6 +26,8 @@ d:\documents\game projects\fightinggame\fightinggame\x64\release\skin.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\primitiveasset.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\pointlightcomponent.obj
 d:\documents\game projects\fightinggame\fightinggame\x64\release\object.obj
+d:\documents\game projects\fightinggame\fightinggame\x64\release\networkmodule.obj
+d:\documents\game projects\fightinggame\fightinggame\x64\release\freecam.obj
 d:\documents\game projects\fightinggame\x64\release\fightinggame.ipdb
 d:\documents\game projects\fightinggame\x64\release\fightinggame.iobj
 d:\documents\game projects\fightinggame\x64\release\fightinggame.exe

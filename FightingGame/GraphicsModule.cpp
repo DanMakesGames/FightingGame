@@ -124,18 +124,18 @@ void GraphicsModule::RenderFrame(float deltaTime)
     glViewport(0, 0, windowX, windowY);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    Camera cam;
-    //cam.SetDistance(45.0f);
-    cam.SetAspect(float(windowX) / float(windowY));
+    //cam.SetAspect(float(windowX) / float(windowY));
 
-    cam.Update();
-
-    lightMangager.UpdateLightBuffer(cam.GetViewProjectMtx(), shaderProgramID);
+    //cam.Update();
+    activeCamera->Update();
+    //lightMangager.UpdateLightBuffer(cam.GetViewProjectMtx(), shaderProgramID);
+    lightMangager.UpdateLightBuffer(activeCamera->GetViewProjMat(), shaderProgramID);
 
     // loop over graphics components and draw the scene.
     for (auto compIt = graphicsComponents.begin(); compIt != graphicsComponents.end();compIt++)
     {
-        (*compIt)->Draw(glm::mat4(1),cam.GetViewProjectMtx(), shaderProgramID);
+        //(*compIt)->Draw(glm::mat4(1),cam.GetViewProjectMtx(), shaderProgramID);
+        (*compIt)->Draw(glm::mat4(1), activeCamera->GetViewProjMat(), shaderProgramID);
     }
     
     glFinish();
@@ -156,4 +156,26 @@ std::list<GraphicsComponent*>::iterator GraphicsModule::RegisterComponent(Graphi
 void GraphicsModule::UnregisterComponent(const std::list<GraphicsComponent*>::iterator& it)
 {
     graphicsComponents.erase(it);
+}
+
+std::list<CameraComponent*>::iterator GraphicsModule::RegisterCamera(CameraComponent* inComponent)
+{
+    cameraComponents.push_front(inComponent);
+    return cameraComponents.begin();
+}
+
+void GraphicsModule::UnregisterCamera(const std::list<CameraComponent*>::iterator& it)
+{
+    cameraComponents.erase(it);
+}
+
+bool GraphicsModule::SetActiveCamera(CameraComponent* inCam)
+{
+    activeCamera = inCam;
+    return true;
+}
+
+glm::vec2 GraphicsModule::GetWindowDim()
+{
+    return glm::vec2(windowX, windowY);
 }

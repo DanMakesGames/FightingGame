@@ -80,6 +80,19 @@ void Mesh::Draw(const glm::mat4& meshMatrix, const glm::mat4& viewProjMatrix, ui
 
 	glUniform1i(glGetUniformLocation(shader, "texSampler"), 0);
 
+	MaterialAsset::MaterialData finalMatData;
+
+	// material
+	if (matAsset != nullptr)
+	{
+		finalMatData = matAsset->GetData();
+	}
+
+	glUniform3fv(glGetUniformLocation(shader, "material.ambient"), 1, (float*)&finalMatData.ambient);
+	glUniform3fv(glGetUniformLocation(shader, "material.diffuse"), 1, (float*)&finalMatData.diffuse);
+	glUniform3fv(glGetUniformLocation(shader, "material.specular"), 1, (float*)&finalMatData.specular);
+	glUniform1f(glGetUniformLocation(shader, "material.shininess"), finalMatData.shininess);
+
 	// bind the vertex and index buffers
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);

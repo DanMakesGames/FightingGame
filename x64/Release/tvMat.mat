@@ -1,5 +1,5 @@
 texture TV_1_clean_color.tga
-ambient 0.2 0.2 0.2
+ambient 0.001 0.001 0.001
 diffuse 1.0 1.0 1.0
 specular 0.3 0.3 0.3
 shininess 0.5
