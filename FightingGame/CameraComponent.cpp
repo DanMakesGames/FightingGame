@@ -71,3 +71,14 @@ void CameraComponent::SetActive()
 {
 	master->graphicsModule.SetActiveCamera(this);
 }
+
+void CameraComponent::Draw(uint shader)
+{
+	glUseProgram(shader);
+	
+	vec3 worldPosition = vec3(GetWorldMat() * vec4(0, 0, 0, 1));
+	
+	glUniform3fv(glGetUniformLocation(shader, "eyePos"), 1, (float*)&worldPosition);
+
+	glUseProgram(0);
+}

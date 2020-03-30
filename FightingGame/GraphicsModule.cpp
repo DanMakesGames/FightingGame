@@ -42,6 +42,8 @@ bool GraphicsModule::Initialize(AssetManager* inAssetManager)
     glClearColor(0., 0., 0., 1.);
 	//glEnable(GL_CULL_FACE);
 
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     // Initialize shader
     // Create the frage and vertex shaders.
     fragmentShaderID = InitializeShader(GL_FRAGMENT_SHADER, "fragmentShader.glsl");
@@ -124,17 +126,14 @@ void GraphicsModule::RenderFrame(float deltaTime)
     glViewport(0, 0, windowX, windowY);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    //cam.SetAspect(float(windowX) / float(windowY));
-
-    //cam.Update();
     activeCamera->Update();
-    //lightMangager.UpdateLightBuffer(cam.GetViewProjectMtx(), shaderProgramID);
+    activeCamera->Draw(shaderProgramID);
+
     lightMangager.UpdateLightBuffer(activeCamera->GetViewProjMat(), shaderProgramID);
 
     // loop over graphics components and draw the scene.
     for (auto compIt = graphicsComponents.begin(); compIt != graphicsComponents.end();compIt++)
     {
-        //(*compIt)->Draw(glm::mat4(1),cam.GetViewProjectMtx(), shaderProgramID);
         (*compIt)->Draw(glm::mat4(1), activeCamera->GetViewProjMat(), shaderProgramID);
     }
     
@@ -178,4 +177,9 @@ bool GraphicsModule::SetActiveCamera(CameraComponent* inCam)
 glm::vec2 GraphicsModule::GetWindowDim()
 {
     return glm::vec2(windowX, windowY);
+}
+
+GLFWwindow* GraphicsModule::GetWindow()
+{
+    return window;
 }

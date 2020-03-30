@@ -18,7 +18,7 @@ public:
 	void SetFOV(float inFOV);
 	void SetNearClip(float inNearClip);
 	void SetFarClip(float inFarClip);
-
+	void Draw(uint shader);
 	void Update();
 
 	glm::mat4 GetViewProjMat();

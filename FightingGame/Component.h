@@ -1,6 +1,7 @@
 #pragma once
 #include "Core.h"
 #include "Object.h"
+#include "Actor.h"
 
 class Actor;
 
@@ -15,7 +16,7 @@ public:
 	virtual void Tick(float deltaTime);
 	glm::vec3 localPosition;
 	glm::quat localRotation;
-
+	glm::mat4 GetWorldMat();
 private:
 	Actor* owner;
 

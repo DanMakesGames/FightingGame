@@ -62,14 +62,24 @@ struct Material
 
 uniform Material material;
 
-vec4 ComputeLight(BaseLight light, vec3 normal, vec3 lightDir)
+vec4 ComputeLight(const in BaseLight light, const in vec3 normal, const in vec3 lightDir)
 {
 	vec4 ambientColor = vec4(light.color * light.ambientIntensity, 1.0f);
 	float diffuseFactor = dot(normal, lightDir);
 	vec4 diffuseColor = vec4(light.color * light.diffuseIntensity * material.diffuse * max(diffuseFactor,0.0f), 1.0f);
-	return ambientColor + diffuseColor;
-	//return ambientColor;
-	//return diffuseColor;
+	
+	specularColor = vec4(0,0,0,0);
+	if (diffuseFactor > 0)
+	{
+		vec3 surfaceToEye = normalize(eyePos - fragPosition);
+		vec3 reflectedLight = normalize(reflect(lightDir, normal));
+		
+		// angle between reflected light and eye
+		float specularFactor = dot(surfaceToEye, reflectedLight);
+		specularColor = vec4(light.color * specular * pow(max(specularFactor,0), shininess),1.0f);
+	}
+	
+	return ambientColor + diffuseColor + specularColor;
 }
 
 void main() 

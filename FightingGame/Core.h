@@ -40,3 +40,4 @@ typedef unsigned int handle;
 #define POLYGON_INDEX_COUNT 3
 
 using namespace std;
+using namespace glm;

@@ -45,7 +45,9 @@ void LightManager::UpdateLightBuffer(const glm::mat4& viewProjMatrix, uint shade
     for (auto it = pointLights.begin(); it != pointLights.end(); it++)
     {
         (*it)->GetPointLightStruct(&(lightBlockStruct.pointLights[pointLightIndex]));
-        lightBlockStruct.pointLights[pointLightIndex].position = viewProjMatrix * lightBlockStruct.pointLights[pointLightIndex].position;
+        
+        // whats the point of multiplying by the view proj matrix? 
+        //lightBlockStruct.pointLights[pointLightIndex].position = viewProjMatrix * lightBlockStruct.pointLights[pointLightIndex].position;
         pointLightIndex++;
     }
     int dirLightIndex = 0;

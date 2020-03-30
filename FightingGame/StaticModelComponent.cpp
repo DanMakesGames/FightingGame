@@ -19,7 +19,8 @@ void StaticModelComponent::Initialize()
 	}
 
 	// Request the static model asset.
-	modelAsset = (StaticModelAsset*)graphicsModule->assetManager->LoadAsset(modelFileName, Asset::EAssetType::AT_STATIC_MODEL);
+	if (modelFileName != "")
+		modelAsset = (StaticModelAsset*)graphicsModule->assetManager->LoadAsset(modelFileName, Asset::EAssetType::AT_STATIC_MODEL);
 	
 	// loop initializing meshes
 	uint meshCount = 0;

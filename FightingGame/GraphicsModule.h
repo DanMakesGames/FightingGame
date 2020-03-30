@@ -38,7 +38,7 @@ But im combining 3d asset renderers and graphical components because I'm lazy.
 class GraphicsModule
 {
 public:
-	GLFWwindow* window;
+
 	bool Initialize(AssetManager* inAssetManager);
 
 	GraphicsModule();
@@ -63,11 +63,13 @@ public:
 
 	glm::vec2 GetWindowDim();
 
+	GLFWwindow* GetWindow();
+
 private:
 
 	// GLFW stuff
 	int windowX, windowY;
-
+	GLFWwindow* window;
 	// shader
 	unsigned int fragmentShaderID;
 	unsigned int vertexShaderID;
