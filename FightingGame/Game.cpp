@@ -23,70 +23,9 @@ void Game::MainLoop()
 	// Remeber that control of delta time needs to go here.
 	// Broken up to facilitate future GGPO implementation
 
-    /*
-    Actor testActor;
-    testActor.position.x = 80;
-    testActor.position.y = -50;
-    testActor.rotation = glm::quat(glm::yawPitchRoll(0.8f, 0.0f ,0.0f));
-    
-    StaticModelComponent testStaticModel1(&testActor);
-
-    testStaticModel1.localPosition.z = -300;
-    testStaticModel1.localRotation = glm::quat(glm::yawPitchRoll(0.0f, 3.14f, 0.0f));
-    testStaticModel1.SetModelSource("Cloud_KH1.obj");
-    testStaticModel1.Initialize();
-    */
-    
-    /*
-    Actor testActor2;
-    testActor2.position.z = 50;
-    testActor2.position.y = -50;
-    testActor2.position.x = 0;
-    StaticModelComponent testStaticModel2(&testActor2);
-    
-    
-    testStaticModel2.textureFileNames.push_back("texture000.png");
-    testStaticModel2.textureFileNames.push_back("texture001.png");
-    
-    //sword tip
-    testStaticModel2.textureFileNames.push_back("texture004.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture007.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture006.png");
-    
-    // hair?
-    testStaticModel2.textureFileNames.push_back("texture001.png");
-    
-    // face
-    testStaticModel2.textureFileNames.push_back("texture000.png");
-    
-    // lowersword
-    testStaticModel2.textureFileNames.push_back("texture003.png");
-    // more hair
-    testStaticModel2.textureFileNames.push_back("texture002.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture014.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture012.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture013.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture009.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture008.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture010.png");
-    
-    testStaticModel2.textureFileNames.push_back("texture011.png");
-    
-    
-    testStaticModel2.SetModelSource("Cloud_KH1.obj");
-    testStaticModel2.Initialize();
-    */
 
     Actor testActor3;
-    //testActor3.rotation = glm::quat(glm::yawPitchRoll(-1.0f, 0.4f, 0.0f));
+    testActor3.rotation = glm::quat(glm::yawPitchRoll(-1.0f, 0.4f, 0.0f));
     StaticModelComponent testStaticModel3(&testActor3);
     testActor3.position = vec3(0,0,300);
     testStaticModel3.SetModelSource("tvModel.fbx");
@@ -125,6 +64,13 @@ void Game::MainLoop()
     light2.base.ambientIntensity = 0.03f;
     light2.base.diffuseIntensity = 1.0f;
     */
+
+    Actor floor;
+    floor.position = vec3(0, -100, 0);
+    StaticModelComponent floorModel(&floor);
+    floorModel.SetModelSource("floor.fbx");
+    floorModel.Initialize();
+
     FreeCam freeCam;
     freeCam.position = glm::vec3(0, 0, 0);
 

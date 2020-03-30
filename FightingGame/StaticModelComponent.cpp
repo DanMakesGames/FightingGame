@@ -17,6 +17,11 @@ void StaticModelComponent::Initialize()
 			materialAssets.emplace_back((MaterialAsset*)master->assetManager.LoadAsset(materialFileNames[matIndex], Asset::EAssetType::AT_MATERIAL));
 		}
 	}
+	// if no materials define, then add default material.
+	else
+	{
+		materialAssets.emplace_back((MaterialAsset*)master->assetManager.LoadAsset(DEFAULT_MAT_FILE, Asset::EAssetType::AT_MATERIAL));
+	}
 
 	// Request the static model asset.
 	if (modelFileName != "")
@@ -43,7 +48,8 @@ void StaticModelComponent::Initialize()
 		// no texture initialization
 		else
 		{
-			meshes[meshIndex].Initialize(&(meshAssets[meshIndex]));
+
+			meshes[meshIndex].Initialize(&(meshAssets[meshIndex]), materialAssets[0]);
 		}
 	}
 }

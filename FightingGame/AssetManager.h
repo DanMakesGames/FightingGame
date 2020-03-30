@@ -7,7 +7,7 @@
 #include "MaterialAsset.h"
 #include <unordered_map>
 
-
+#define DEFAULT_MAT_FILE "defaultMat.mat"
 
 /*
 Handles the pre-loading, and storage of loaded assets.

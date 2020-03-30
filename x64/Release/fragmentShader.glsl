@@ -77,10 +77,7 @@ vec4 ComputeLight(const in BaseLight light, const in vec3 normal, const in vec3 
 		
 		// angle between reflected light and eye
 		float specularFactor = dot(surfaceToEye, reflectedLight);
-		if(specularFactor > 0)
-		{
-			specularColor = light.color * vec4( material.specular * pow(max(specularFactor,0), material.shininess),1.0f);
-		}
+		specularColor = light.color * vec4( material.specular * pow(max(specularFactor,0), material.shininess),1.0f);
 	}
 	
 	return ambientColor + diffuseColor + specularColor;
