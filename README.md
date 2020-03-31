@@ -16,4 +16,4 @@
 * GGPO rollback netcode.
 
 ### Notes:
-Fighting game folder contains the source code.
+FightingGame folder contains the source code.
