@@ -14,3 +14,6 @@
 * Skeletal Animation (already implemented in a different project).
 * Sound.
 * GGPO rollback netcode.
+
+### Notes:
+Fighting game folder contains the source code.
